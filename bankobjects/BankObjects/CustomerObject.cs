@@ -13,10 +13,10 @@ namespace BankObjects
         private string _accountnumber;
 
 
-        public CustomerObject(string firstname)
+        public CustomerObject(string firstname, string lastname)
         {
-            _firstname = Firstname;
-            _lastname = Lastname;
+            _firstname = firstname;
+            _lastname = lastname;
             _accountnumber = Accountnumber;
         }
 
