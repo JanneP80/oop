@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace BankObjects
 {
-    class Program
+    class AccountActivityObject
     {
-        static void Main(string[] args)
-        {
-
-
-        }
     }
 }
