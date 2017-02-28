@@ -9,7 +9,7 @@ namespace BankObjects
     class BankObject
     {
         private string _bankName;
-        private string _account; // list is better
+        private List<AccountObject> _account; // list is better
         private Random _rand = new Random(DateTime.Now.Millisecond);
 
         // public List<|accounts|>
@@ -23,10 +23,10 @@ namespace BankObjects
         public BankObject(string bankName)
         {
             _bankName = bankName;
-            // _account = account;
+            _account = new List<AccountObject>();
         }
 
-        public string Account // accounts
+        public List<AccountObject> Account // accounts
         {
             get { return _account; }
             set { _account = value; }
@@ -39,7 +39,7 @@ namespace BankObjects
             {
                 _accountNumber +=  _rand.Next(0, 9);
             }
-            // revoke // account _accounts.Add(new.Account())
+            _account.Add(new AccountObject(_accountNumber));
             return _accountNumber;
         }
        

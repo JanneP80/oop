@@ -9,13 +9,14 @@ namespace BankObjects
     class AccountObject
     {
         private string _accountnumber;
-        private string _accountactivity;
+        private List<AccountActivityObject> _accountactivity;
         private  double _balance;
         
 
         public AccountObject(string accountnumber)
         {
             _accountnumber = accountnumber;
+            _accountactivity = new List<AccountActivityObject>();
             _balance = Balance;
 
         }
@@ -27,7 +28,7 @@ namespace BankObjects
             set { _accountnumber = value; }
         }
 
-        public string Accountactivity
+        public List<AccountActivityObject> AccountActivity
         {
             get { return _accountactivity; }
             set { _accountactivity = value; }
@@ -40,9 +41,10 @@ namespace BankObjects
         }
 
 
-        public double CreateNewAccountActivity(double transferSum)
+        public double CreateNewAccountActivity(DateTime date, TimeSpan time, double transferSum)
         {
             Balance = Balance + transferSum;
+            _accountactivity.Add(new AccountActivityObject(date, time, transferSum));
             return Balance;
 
         }
