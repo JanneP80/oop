@@ -32,39 +32,46 @@ namespace BankObjects
             accountObject01.Balance = accountObject01.CreateNewAccountActivity(1000300);
             Console.WriteLine("customer01, balance: " + accountObject01.Balance);
 
-            var AccountObject02 = new AccountObject(customer03.Accountnumber);
-            AccountObject02.Balance = AccountObject02.CreateNewAccountActivity(2000100);
-            Console.WriteLine("customer02, balance: " + AccountObject02.Balance);
+            var accountObject02 = new AccountObject(customer03.Accountnumber);
+            accountObject02.Balance = accountObject02.CreateNewAccountActivity(2000100);
+            Console.WriteLine("customer02, balance: " + accountObject02.Balance);
 
-            var AccountObject03 = new AccountObject(customer03.Accountnumber); // or putting accountnumber into the naming accountobjectXX
-            AccountObject03.Balance = AccountObject03.CreateNewAccountActivity(3000200);
-            Console.WriteLine("customer03, balance: " + AccountObject03.Balance);
+            var accountObject03 = new AccountObject(customer03.Accountnumber); // or putting accountnumber into the naming accountobjectXX
+            accountObject03.Balance = accountObject03.CreateNewAccountActivity(3000200);
+            Console.WriteLine("customer03, balance: " + accountObject03.Balance);
 
             Console.Write(customer01);
             Console.WriteLine(", balance: " + accountObject01.Balance);
             Console.Write(customer02);
-            Console.WriteLine(", balance: " + AccountObject02.Balance);
+            Console.WriteLine(", balance: " + accountObject02.Balance);
             Console.Write(customer03);
-            Console.WriteLine(", balance: " + AccountObject03.Balance);
+            Console.WriteLine(", balance: " + accountObject03.Balance);
             Console.WriteLine("\n");
 
             // TODO!!! new activity with timestamps
             accountObject01.Balance = accountObject01.CreateNewAccountActivity(-10300);
-
-            var includeTimestamp02 = new AccountActivityObject(new DateTime(2017, 2, 1), new TimeSpan(9, 30, 0),  -10300);
+            var includeTimestamp02 = new AccountActivityObject(new DateTime(2017, 2, 1), new TimeSpan(10, 30, 0),  -10300);
             Console.WriteLine("Account activity 02: "+ includeTimestamp02);
 
-            AccountObject02.Balance = AccountObject02.CreateNewAccountActivity(-20700);
-            AccountObject03.Balance = AccountObject03.CreateNewAccountActivity(-200300);
+            accountObject02.Balance = accountObject02.CreateNewAccountActivity(-20700);
+            var includeTimestamp03 = new AccountActivityObject(new DateTime(2017, 6, 3), new TimeSpan(9, 10, 4), -20700);
+
+            accountObject03.Balance = accountObject03.CreateNewAccountActivity(-200300);
+            var includeTimestamp04 = new AccountActivityObject(new DateTime(2017, 5, 2), new TimeSpan(19, 30, 0), -200300);
+
             accountObject01.Balance = accountObject01.CreateNewAccountActivity(-7300);
-            AccountObject02.Balance = AccountObject02.CreateNewAccountActivity(-11300);
+            var includeTimestamp05 = new AccountActivityObject(new DateTime(2017, 3, 1), new TimeSpan(7, 20, 10), -7300);
+
+            accountObject02.Balance = accountObject02.CreateNewAccountActivity(-11300);
+            var includeTimestamp06 = new AccountActivityObject(new DateTime(2017, 2, 5), new TimeSpan(6, 10, 0), -11300);
+
 
             Console.Write(customer01);
             Console.WriteLine(", balance: " + accountObject01.Balance);
             Console.Write(customer02);
-            Console.WriteLine(", balance: " + AccountObject02.Balance);
+            Console.WriteLine(", balance: " + accountObject02.Balance);
             Console.Write(customer03);
-            Console.WriteLine(", balance: " + AccountObject03.Balance);
+            Console.WriteLine(", balance: " + accountObject03.Balance);
 
 
             Console.ReadKey();
