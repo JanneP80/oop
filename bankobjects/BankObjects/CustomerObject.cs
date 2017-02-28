@@ -40,7 +40,13 @@ namespace BankObjects
 
         public override string ToString()
         {
-            return base.ToString();
+            return PrintCustomerInfo();
+        }
+
+        private string PrintCustomerInfo() // private is only called here
+        {
+            return "Firstname: " + _firstname + ", " + " Lastname: " + _lastname + ": " + "\nAccountnumber: "+ Accountnumber;
+            
         }
     }
 }

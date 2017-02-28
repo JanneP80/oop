@@ -10,7 +10,7 @@ namespace BankObjects
     {
         private string _accountnumber;
         private string _accountactivity;
-        private double _balance;
+        private  double _balance;
 
         public AccountObject(string accountnumber)
         {
@@ -32,7 +32,7 @@ namespace BankObjects
             set { _accountactivity = value; }
         }
 
-        public double Balance
+        public  double Balance
         {
             get { return _balance; } // print out balance using this
             set { _balance = value; }

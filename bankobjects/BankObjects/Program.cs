@@ -10,37 +10,61 @@ namespace BankObjects
     {
         static void Main(string[] args)
         {
-            var BankObject = new BankObject("Deutche Bank");
-            var Customer01 = new CustomerObject("Erkki", "Liikanen");
-            var Customer02 = new CustomerObject("Sirkka", "Hämäläinen");
-            var Customer03 = new CustomerObject("Rolf", "Kullberg");
+            var bankObject = new BankObject("Deutche Bank");
+            var customer01 = new CustomerObject("Erkki", "Liikanen");
+            var customer02 = new CustomerObject("Sirkka", "Hämäläinen");
+            var customer03 = new CustomerObject("Rolf", "Kullberg");
+            customer03.Accountnumber = bankObject.CreateNewAccount();
+            customer02.Accountnumber = bankObject.CreateNewAccount();
+            customer01.Accountnumber = bankObject.CreateNewAccount();
 
-            Customer03.Accountnumber = BankObject.CreateNewAccount();
-            Customer02.Accountnumber = BankObject.CreateNewAccount();
-            Customer01.Accountnumber = BankObject.CreateNewAccount();
 
+            Console.WriteLine("customer03: " + customer03.Firstname);
+            Console.WriteLine("customer03, account: "+ customer03.Accountnumber);
 
-            Console.WriteLine("customer03: " + Customer03.Firstname);
-            Console.WriteLine("customer03, account: "+ Customer03.Accountnumber);
+            Console.WriteLine("customer02: " + customer02.Firstname);
+            Console.WriteLine("customer02, account: " + customer02.Accountnumber);
 
-            Console.WriteLine("customer02: " + Customer02.Firstname);
-            Console.WriteLine("customer02, account: " + Customer02.Accountnumber);
+            Console.WriteLine("customer01: " + customer01.Firstname);
+            Console.WriteLine("customer01, account: " + customer01.Accountnumber);
 
-            Console.WriteLine("customer01: " + Customer01.Firstname);
-            Console.WriteLine("customer01, account: " + Customer01.Accountnumber);
+            var accountObject01 = new AccountObject(customer03.Accountnumber);
+            accountObject01.Balance = accountObject01.CreateNewAccountActivity(1000300);
+            Console.WriteLine("customer01, balance: " + accountObject01.Balance);
 
-            var AccountObject01 = new AccountObject(Customer03.Accountnumber);
-            AccountObject01.Balance = AccountObject01.CreateNewAccountActivity(1000300);
-            Console.WriteLine("customer01, balance: " + AccountObject01.Balance);
-
-            var AccountObject02 = new AccountObject(Customer03.Accountnumber);
+            var AccountObject02 = new AccountObject(customer03.Accountnumber);
             AccountObject02.Balance = AccountObject02.CreateNewAccountActivity(2000100);
             Console.WriteLine("customer02, balance: " + AccountObject02.Balance);
 
-            var AccountObject03 = new AccountObject(Customer03.Accountnumber);
+            var AccountObject03 = new AccountObject(customer03.Accountnumber); // or putting accountnumber into the naming accountobjectXX
             AccountObject03.Balance = AccountObject03.CreateNewAccountActivity(3000200);
             Console.WriteLine("customer03, balance: " + AccountObject03.Balance);
 
+            Console.Write(customer01);
+            Console.WriteLine(", balance: " + accountObject01.Balance);
+            Console.Write(customer02);
+            Console.WriteLine(", balance: " + AccountObject02.Balance);
+            Console.Write(customer03);
+            Console.WriteLine(", balance: " + AccountObject03.Balance);
+            Console.WriteLine("\n");
+
+            // TODO!!! new activity with timestamps
+            accountObject01.Balance = accountObject01.CreateNewAccountActivity(-10300);
+
+            var includeTimestamp02 = new AccountActivityObject(new DateTime(2017, 2, 1), new TimeSpan(9, 30, 0),  -10300);
+            Console.WriteLine("Account activity 02: "+ includeTimestamp02);
+
+            AccountObject02.Balance = AccountObject02.CreateNewAccountActivity(-20700);
+            AccountObject03.Balance = AccountObject03.CreateNewAccountActivity(-200300);
+            accountObject01.Balance = accountObject01.CreateNewAccountActivity(-7300);
+            AccountObject02.Balance = AccountObject02.CreateNewAccountActivity(-11300);
+
+            Console.Write(customer01);
+            Console.WriteLine(", balance: " + accountObject01.Balance);
+            Console.Write(customer02);
+            Console.WriteLine(", balance: " + AccountObject02.Balance);
+            Console.Write(customer03);
+            Console.WriteLine(", balance: " + AccountObject03.Balance);
 
 
             Console.ReadKey();
