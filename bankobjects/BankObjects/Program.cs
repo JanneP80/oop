@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,13 +13,25 @@ namespace BankObjects
         static void Main(string[] args)
         {
             var bankObject = new BankObject("Deutche Bank");
-            var customer01 = new CustomerObject("Erkki", "Liikanen");
-            var customer02 = new CustomerObject("Sirkka", "Hämäläinen");
-            var customer03 = new CustomerObject("Rolf", "Kullberg");
+             
+            List<CustomerObject> customers = new List<CustomerObject>();
+
+            customers.Add(new CustomerObject("Erkki", "Liikanen", bankObject.CreateNewAccount()));
+            customers.Add(new CustomerObject("Sirkka", "Hämäläinen", bankObject.CreateNewAccount()));
+            customers.Add(new CustomerObject("Rolf", "Kullberg", bankObject.CreateNewAccount()));
+
+            Console.WriteLine("list customer 0, "+ customers.ElementAt(0).ToString());
+            Console.WriteLine("list customer 1, " + customers.ElementAt(1).Firstname +" account: " + customers.ElementAt(1).Accountnumber);
+            Console.WriteLine("list customer 2, {0}, account: {1}", customers.ElementAt(2).Lastname, customers.ElementAt(2).Accountnumber);
+
+            var customer01 = new CustomerObject("Erkki", "Liikanen", bankObject.CreateNewAccount());
+            var customer02 = new CustomerObject("Sirkka", "Hämäläinen", bankObject.CreateNewAccount());
+            var customer03 = new CustomerObject("Rolf", "Kullberg", bankObject.CreateNewAccount());
             customer03.Accountnumber = bankObject.CreateNewAccount();
             customer02.Accountnumber = bankObject.CreateNewAccount();
             customer01.Accountnumber = bankObject.CreateNewAccount();
 
+            /*
 
             Console.WriteLine("customer03: " + customer03.Firstname);
             Console.WriteLine("customer03, account: "+ customer03.Accountnumber);
@@ -27,12 +41,13 @@ namespace BankObjects
 
             Console.WriteLine("customer01: " + customer01.Firstname);
             Console.WriteLine("customer01, account: " + customer01.Accountnumber);
+            */
 
-            var accountObject01 = new AccountObject(customer03.Accountnumber);
+            var accountObject01 = new AccountObject(customer01.Accountnumber);
             accountObject01.Balance = accountObject01.CreateNewAccountActivity(1000300);
             Console.WriteLine("customer01, balance: " + accountObject01.Balance);
 
-            var accountObject02 = new AccountObject(customer03.Accountnumber);
+            var accountObject02 = new AccountObject(customer02.Accountnumber);
             accountObject02.Balance = accountObject02.CreateNewAccountActivity(2000100);
             Console.WriteLine("customer02, balance: " + accountObject02.Balance);
 
@@ -48,7 +63,7 @@ namespace BankObjects
             Console.WriteLine(", balance: " + accountObject03.Balance);
             Console.WriteLine("\n");
 
-            // TODO!!! new activity with timestamps
+            // TODO!!! connect new activity with timestamps
             accountObject01.Balance = accountObject01.CreateNewAccountActivity(-10300);
             var includeTimestamp02 = new AccountActivityObject(new DateTime(2017, 2, 1), new TimeSpan(10, 30, 0),  -10300);
             Console.WriteLine("Account activity 02: "+ includeTimestamp02);
@@ -73,6 +88,8 @@ namespace BankObjects
             Console.Write(customer03);
             Console.WriteLine(", balance: " + accountObject03.Balance);
 
+            // bankObject.addtrasaction(customers[X500DistinguishedName], accountnumber,
+             //   new DesignerTransactionCloseEventArgs(sutomer, new DateTime(year, month, day)));
 
             Console.ReadKey();
         }

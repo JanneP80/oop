@@ -11,6 +11,7 @@ namespace BankObjects
         private string _accountnumber;
         private string _accountactivity;
         private  double _balance;
+        
 
         public AccountObject(string accountnumber)
         {

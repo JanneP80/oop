@@ -12,6 +12,8 @@ namespace BankObjects
         private string _account; // list is better
         private Random _rand = new Random(DateTime.Now.Millisecond);
 
+        // public List<|accounts|>
+
         public string BankName
         {
             get { return _bankName; }
@@ -37,7 +39,7 @@ namespace BankObjects
             {
                 _accountNumber +=  _rand.Next(0, 9);
             }
-            // revoke account 
+            // revoke // account _accounts.Add(new.Account())
             return _accountNumber;
         }
        
