@@ -51,8 +51,10 @@ namespace BankObjects
 
             for (int i = 0; i < account1.AccountActivity.Count; i++)
             {
+                if (account1.AccountActivity.timestamp)
                 Console.WriteLine(account1.AccountActivity[i]);
             }
+
 
             /*
             Console.WriteLine("\ncustomer,{0} balance: " + account1.Balance, customers[0]);
