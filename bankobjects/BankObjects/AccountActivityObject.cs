@@ -53,6 +53,7 @@ namespace BankObjects
         private string ActivityInfo() // private is only called here
         {
             DateTime timestamp = _date + _time;
+
             return "Date: " + timestamp + ", " + ": " + "Sum: " + Sum;
             // return "Date: " + date + ", " + " Time: " + _time + ": " + "Sum: " + Sum;
         }

@@ -42,6 +42,15 @@ namespace BankObjects
             _account.Add(new AccountObject(_accountNumber));
             return _accountNumber;
         }
-       
+        public override string ToString()
+        {
+            return TesterOne();
+        }
+
+        private string TesterOne() // private is only called here
+        {
+            string dingdong = "Testeri: ";
+            return dingdong;
+        }
     }
 }

@@ -30,8 +30,15 @@ namespace BankObjects
 
         public List<AccountActivityObject> AccountActivity
         {
-            get { return _accountactivity; }
+            // get { return _accountactivity; }
             set { _accountactivity = value; }
+
+            get
+            {
+                return (from AccountActivity in _accountactivity
+                        orderby AccountActivity.Date
+                    select AccountActivity).ToList();
+            }
         }
 
         public  double Balance
@@ -49,6 +56,36 @@ namespace BankObjects
 
         }
 
+        public override string ToString()
+        {
+            return TesterOne();
+            //return TesterOne();
+        }
+
+        private string TesterOne() // private is only called here
+        {
+            string dingdong = "Testeri: ";
+           // return dingdong;
+           /*
+            Console.WriteLine("{0}", AccountActivity.OrderBy(date => date.Date.Month.Equals(11)));
+
+            var list = _accountactivity.GetItems()
+                    .Where(p => p.Status == 1)
+                    .OrderBy(x => x.Date).First();
+
+            var date = AccountActivity.Min(c => c.Date);
+            AccountActivity.GetItems().Where(p => p.Status == 1 && c.Date == date).ToList();
+
+            for (int i = 0; i < AccountActivity.Count; i++)
+            {
+                //Console.WriteLine(account1.AccountActivity.OrderByDescending(x => x.Date.Month));
+                //{
+                Console.WriteLine(AccountActivity[i]);
+
+                //}
+            }*/
+            return dingdong;
+        }
         /*
         var account01 = new AccountObject(Accountnumber);
         _account01 += 100;
