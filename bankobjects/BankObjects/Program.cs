@@ -186,6 +186,7 @@ namespace BankObjects
             {
                 Console.WriteLine("{0}\t{1}\t{2}{3:0.00}", AccountActivity[i].Date.ToShortDateString(), AccountActivity[i].Time, AccountActivity[i].Sum >= 0 ? "+" : "", AccountActivity[i].Sum);
             }
+            //Console.WriteLine("Balance on the timeinterval: ");
             Console.WriteLine("\n");
         }
     }
