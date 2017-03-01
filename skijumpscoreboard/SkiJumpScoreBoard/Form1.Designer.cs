@@ -173,6 +173,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "SkiJumpMainForm";
             this.Text = "Ski Jump Score Board";
+            this.Load += new System.EventHandler(this.SkiJumpMainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
