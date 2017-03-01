@@ -44,7 +44,7 @@ namespace BankObjects
        //     date = _date + _time;
        //     return date;
        // }
-
+       
         public override string ToString()
         {
             return ActivityInfo();

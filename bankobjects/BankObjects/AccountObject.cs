@@ -86,6 +86,17 @@ namespace BankObjects
             }*/
             return dingdong;
         }
+
+        public List<AccountActivityObject> PrintOutActivityOnTimeIntervall(DateTime startActivity, DateTime endActivity)
+        //public List<Transaction> GetTransactionsForTimeSpan(DateTime startTime, DateTime endTime)
+        {
+            List<AccountActivityObject> res = (from transaction in _accountactivity
+                                               where transaction.Date >= startActivity && transaction.Date <= endActivity
+                                               orderby transaction.Date
+                                     select transaction).ToList();
+            return res;
+        }
+
         /*
         var account01 = new AccountObject(Accountnumber);
         _account01 += 100;
