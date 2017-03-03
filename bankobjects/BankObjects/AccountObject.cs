@@ -10,8 +10,8 @@ namespace BankObjects
     {
         private string _accountnumber;
         private List<AccountActivityObject> _accountactivity;
-        private  double _balance;
-        
+        private double _balance;
+
         public AccountObject(string accountnumber)
         {
             _accountnumber = accountnumber;
@@ -34,11 +34,11 @@ namespace BankObjects
             {
                 return (from AccountActivity in _accountactivity
                         orderby AccountActivity.Date
-                    select AccountActivity).ToList();
+                        select AccountActivity).ToList();
             }
         }
 
-        public  double Balance
+        public double Balance
         {
             get { return _balance; } // print out balance using this
             set { _balance = value; }
@@ -51,13 +51,13 @@ namespace BankObjects
             _accountactivity.Add(new AccountActivityObject(date, time, transferSum));
             return Balance;
         }
-        
+
         public List<AccountActivityObject> PrintOutActivityOnTimeIntervall(DateTime startActivity, DateTime endActivity)
         {
             List<AccountActivityObject> res = (from transaction in _accountactivity
                                                where transaction.Date >= startActivity && transaction.Date <= endActivity
                                                orderby transaction.Date
-                                     select transaction).ToList();
+                                               select transaction).ToList();
             return res;
         }
 

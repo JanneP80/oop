@@ -35,7 +35,7 @@ namespace BankObjects
             var _accountNumber = "FI";
             for (int i = 0; i < 16; i++)
             {
-                _accountNumber +=  _rand.Next(0, 9);
+                _accountNumber += _rand.Next(0, 9);
             }
             _account.Add(new AccountObject(_accountNumber));
             return _accountNumber;

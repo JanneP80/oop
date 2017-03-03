@@ -53,37 +53,34 @@ namespace BankObjects
             for (int i = 0; i < account1.AccountActivity.Count; i++)
             {
                 Console.WriteLine(account1.AccountActivity[i]);
-
             }
+
             Console.WriteLine("\nCustomer 2 " + customers[1]);
             for (int i = 0; i < account2.AccountActivity.Count; i++)
             {
                 Console.WriteLine(account2.AccountActivity[i]);
-
             }
 
             Console.WriteLine("\nCustomer 3 " + customers[2]);
             for (int i = 0; i < account3.AccountActivity.Count; i++)
             {
                 Console.WriteLine(account3.AccountActivity[i]);
-
             }
 
             Console.WriteLine("\nPrinting every customers balance at the end: "); // checking balance
             Console.WriteLine("\nCustomer 1, " + customers[0] + " Balance: " + account1.Balance);
             Console.WriteLine("Customer 2, " + customers[1] + " Balance: " + account2.Balance);
             Console.WriteLine("Customer 3, " + customers[2] + " Balance: " + account3.Balance);
-            
+
             Console.WriteLine("\nCustomer 2 timeintervall 1-3 months " + customers[1]);
             for (int i = 0; i < account2.AccountActivity.Count; i++)
             {
-                if (account2.AccountActivity[i].Date.Month>(1) && account2.AccountActivity[i].Date.Month < (3) )
+                if (account2.AccountActivity[i].Date.Month > (1) && account2.AccountActivity[i].Date.Month < (3))
                 {
-
                     Console.WriteLine(account2.AccountActivity[i]);
                 }
             }
-            
+
             PrintTransactions(account1.AccountActivity, customers[0]);
 
             var endTime = DateTime.Today;

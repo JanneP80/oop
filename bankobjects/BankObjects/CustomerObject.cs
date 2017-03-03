@@ -45,8 +45,7 @@ namespace BankObjects
 
         private string PrintCustomerInfo() // private is only called here
         {
-            return "Firstname: " + _firstname + ", " + " Lastname: " + _lastname + ": " + "\nAccountnumber: "+ Accountnumber;
-            
+            return "Firstname: " + _firstname + ", " + " Lastname: " + _lastname + ": " + "\nAccountnumber: " + Accountnumber;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace BankObjects
         private DateTime _date;
         private TimeSpan _time;
         private double _sum;
-        
+
         public AccountActivityObject(DateTime date, TimeSpan time, double sum)
         {
             _date = date;
@@ -37,14 +37,14 @@ namespace BankObjects
             set { _sum = value; }
         }
 
-       // public DateTime IncludeTimestamp(DateTime _date, TimeSpan _time, Double Sum)
-       // {
-            // var date = new DateTime(2017, 2, 1);
-            // var time = new TimeSpan(9, 30, 0);
-       //     date = _date + _time;
-       //     return date;
-       // }
-       
+        // public DateTime IncludeTimestamp(DateTime _date, TimeSpan _time, Double Sum)
+        // {
+        // var date = new DateTime(2017, 2, 1);
+        // var time = new TimeSpan(9, 30, 0);
+        //     date = _date + _time;
+        //     return date;
+        // }
+
         public override string ToString()
         {
             return ActivityInfo();
