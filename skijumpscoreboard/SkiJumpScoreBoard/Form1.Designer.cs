@@ -41,24 +41,50 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
             // 
+            this.textBox1.AutoCompleteCustomSource.AddRange(new string[] {
+            "JumpLength"});
             this.textBox1.Location = new System.Drawing.Point(273, 240);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(124, 22);
-            this.textBox1.TabIndex = 0;
+            this.textBox1.TabIndex = 2;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // listBox1
             // 
+            this.listBox1.FormatString = "N2";
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(680, 240);
+            this.listBox1.Items.AddRange(new object[] {
+            "Wind1",
+            "Wind2",
+            "Wind3",
+            "Wind4",
+            "Wind5"});
+            this.listBox1.Location = new System.Drawing.Point(723, 238);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(120, 84);
-            this.listBox1.TabIndex = 1;
+            this.listBox1.TabIndex = 8;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // comboBox1
             // 
@@ -66,18 +92,21 @@
             this.comboBox1.Location = new System.Drawing.Point(60, 240);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(145, 24);
-            this.comboBox1.TabIndex = 2;
+            this.comboBox1.TabIndex = 1;
             // 
             // comboBox2
             // 
+            this.comboBox2.FormatString = "N1";
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(452, 238);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(145, 24);
             this.comboBox2.TabIndex = 3;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // comboBox3
             // 
+            this.comboBox3.FormatString = "N1";
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(452, 268);
             this.comboBox3.Name = "comboBox3";
@@ -86,6 +115,7 @@
             // 
             // comboBox4
             // 
+            this.comboBox4.FormatString = "N1";
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Location = new System.Drawing.Point(452, 298);
             this.comboBox4.Name = "comboBox4";
@@ -94,6 +124,7 @@
             // 
             // comboBox5
             // 
+            this.comboBox5.FormatString = "N1";
             this.comboBox5.FormattingEnabled = true;
             this.comboBox5.Location = new System.Drawing.Point(452, 328);
             this.comboBox5.Name = "comboBox5";
@@ -102,6 +133,7 @@
             // 
             // comboBox6
             // 
+            this.comboBox6.FormatString = "N1";
             this.comboBox6.FormattingEnabled = true;
             this.comboBox6.Location = new System.Drawing.Point(452, 358);
             this.comboBox6.Name = "comboBox6";
@@ -138,7 +170,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(677, 220);
+            this.label4.Location = new System.Drawing.Point(720, 220);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 17);
             this.label4.TabIndex = 11;
@@ -154,11 +186,127 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "Ski Jump Score Board Points Calculator";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(273, 326);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(124, 26);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Calculate points";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(135, 289);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(262, 17);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Calculate points when all fields are filled.";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(273, 364);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(46, 17);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "points";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(273, 385);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 22);
+            this.textBox2.TabIndex = 16;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.ImageLocation = "D:\\ekoodi17k\\dev\\oop\\skijumpscoreboard\\SkiJumpScoreBoard\\flags\\at.png";
+            this.pictureBox1.Location = new System.Drawing.Point(604, 238);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(38, 26);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 17;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.ImageLocation = "D:\\ekoodi17k\\dev\\oop\\skijumpscoreboard\\SkiJumpScoreBoard\\flags\\FINL0001.GIF";
+            this.pictureBox2.Location = new System.Drawing.Point(604, 268);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(38, 24);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 18;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.ImageLocation = "D:\\ekoodi17k\\dev\\oop\\skijumpscoreboard\\SkiJumpScoreBoard\\flags\\japan.png";
+            this.pictureBox3.Location = new System.Drawing.Point(604, 298);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(38, 24);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 19;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.ImageLocation = "D:\\ekoodi17k\\dev\\oop\\skijumpscoreboard\\SkiJumpScoreBoard\\flags\\german-flag_small." +
+    "gif";
+            this.pictureBox4.Location = new System.Drawing.Point(604, 328);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(38, 24);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 20;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.ImageLocation = "D:\\ekoodi17k\\dev\\oop\\skijumpscoreboard\\SkiJumpScoreBoard\\flags\\NORWAY.png";
+            this.pictureBox5.Location = new System.Drawing.Point(604, 358);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(38, 24);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 21;
+            this.pictureBox5.TabStop = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(57, 83);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(152, 17);
+            this.label8.TabIndex = 23;
+            this.label8.Text = "Input Hill Size (K-point)";
+            // 
+            // textBox3
+            // 
+            this.textBox3.AutoCompleteCustomSource.AddRange(new string[] {
+            "JumpLength"});
+            this.textBox3.Location = new System.Drawing.Point(60, 103);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(145, 22);
+            this.textBox3.TabIndex = 0;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
             // SkiJumpMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(892, 503);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.pictureBox5);
+            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -175,15 +323,17 @@
             this.Name = "SkiJumpMainForm";
             this.Text = "Ski Jump Score Board";
             this.Load += new System.EventHandler(this.SkiJumpMainForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox3;
@@ -195,6 +345,19 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBox3;
     }
 }
 

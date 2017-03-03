@@ -1,0 +1,31 @@
+Tiedettävä etukäteen
+
+- Osallistujalista
+- Mäen K- piste
+
+-Hyppääjien määrä 
+
+Tiedettävä kisan aikana
+
+- Lähtölava
+- Tuuli (5 mittauspistettä, keskiarvo); randomilla
+- Hyppyvuorossa olija
+
+- Hypyn pituus
+- Tuomarien pisteet (yht max 60 pistettä)
+
+Pisteenlasku:
+K-piste = 60 pistettä
+pituuspisteet = 1,8x metrit yli k:n
+tuomaripisteet, kolme keskimmäistä
+tuulihyvitys, takatuuli pluspisteitä, vastatuuli, miinusta
+		( = Tuulen voimakkuuden keskiarvo x (K-piste - 36)/20  )
+lavahyvitys, jos lähtee ylempää vähennetään pituusmetreinä 1m = 5m eli 5x lavanmuutos
+	näin voi laittaa kertoimeksi -5, jolloin menee suoraan syötetyllä lavamuutoksella
+
+
+
+tulokset:
+- paras ensin
+- paljonko muut jäljessä
+
