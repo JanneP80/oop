@@ -12,8 +12,6 @@ namespace BankObjects
         private List<AccountObject> _account; // list is better
         private Random _rand = new Random(DateTime.Now.Millisecond);
 
-        // public List<|accounts|>
-
         public string BankName
         {
             get { return _bankName; }
@@ -41,16 +39,6 @@ namespace BankObjects
             }
             _account.Add(new AccountObject(_accountNumber));
             return _accountNumber;
-        }
-        public override string ToString()
-        {
-            return TesterOne();
-        }
-
-        private string TesterOne() // private is only called here
-        {
-            string dingdong = "Testeri: ";
-            return dingdong;
         }
     }
 }

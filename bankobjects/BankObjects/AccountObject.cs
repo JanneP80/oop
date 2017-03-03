@@ -12,18 +12,15 @@ namespace BankObjects
         private List<AccountActivityObject> _accountactivity;
         private  double _balance;
         
-
         public AccountObject(string accountnumber)
         {
             _accountnumber = accountnumber;
             _accountactivity = new List<AccountActivityObject>();
             _balance = Balance;
-
         }
 
         public string Accountnumber // same as customers account number
         {
-
             get { return _accountnumber; }
             set { _accountnumber = value; }
         }
@@ -53,42 +50,9 @@ namespace BankObjects
             Balance = Balance + transferSum;
             _accountactivity.Add(new AccountActivityObject(date, time, transferSum));
             return Balance;
-
         }
-
-        public override string ToString()
-        {
-            return TesterOne();
-            //return TesterOne();
-        }
-
-        private string TesterOne() // private is only called here
-        {
-            string dingdong = "Testeri: ";
-           // return dingdong;
-           /*
-            Console.WriteLine("{0}", AccountActivity.OrderBy(date => date.Date.Month.Equals(11)));
-
-            var list = _accountactivity.GetItems()
-                    .Where(p => p.Status == 1)
-                    .OrderBy(x => x.Date).First();
-
-            var date = AccountActivity.Min(c => c.Date);
-            AccountActivity.GetItems().Where(p => p.Status == 1 && c.Date == date).ToList();
-
-            for (int i = 0; i < AccountActivity.Count; i++)
-            {
-                //Console.WriteLine(account1.AccountActivity.OrderByDescending(x => x.Date.Month));
-                //{
-                Console.WriteLine(AccountActivity[i]);
-
-                //}
-            }*/
-            return dingdong;
-        }
-
+        
         public List<AccountActivityObject> PrintOutActivityOnTimeIntervall(DateTime startActivity, DateTime endActivity)
-        //public List<Transaction> GetTransactionsForTimeSpan(DateTime startTime, DateTime endTime)
         {
             List<AccountActivityObject> res = (from transaction in _accountactivity
                                                where transaction.Date >= startActivity && transaction.Date <= endActivity
@@ -98,52 +62,12 @@ namespace BankObjects
         }
 
         /*
-        var account01 = new AccountObject(Accountnumber);
-        _account01 += 100;
-
-        var AccountActivity03 = new AccountObject("Rolf", "Kullberg");
-
-        AccountActivity03.Accountnumber = BankObject.CreateNewAccount();
-        return _balance;
-    }
-    */
-        // kirjaa tapahtuma 
-        // lisää/ poista rahaa balanceen
-
-
-        /*
-        var _accountNumber = "FI";
-        for (int i = 0; i < 16; i++)
-        {
-            _accountNumber += _rand.Next(0, 9);
-        }
-        // revoke account 
-        return _accountNumber;
-        */
-
-
-
-
-        /*
         public string PrintOutAllActivity()
         {
             for (int i =0; i <Accountactivity.Length; i++)
             {
                 Accountactivity();
             }
-
-        }
-
-        public string PrintOutActivityOnTimeIntervall(DateTime startActivity, DateTime endActivity)
-        {
-
-            Accountactivity();
-
-        }
-
-        public double PrintBalance
-        {
-            
         }
         */
     }
