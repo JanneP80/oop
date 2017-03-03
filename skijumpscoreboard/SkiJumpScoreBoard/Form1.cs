@@ -103,6 +103,26 @@ namespace SkiJumpScoreBoard
             {
                 //skiJumpers. textBox1.Text;
             }*/
+            //int ii = int.Parse(textBox3.Text);
+            //skiJumpers[comboBox1.SelectedIndex].Points = ii;
+            
+            // TODO!!! fix text box3 -> points
+            //if textBox3_TextChanged() == true
+
+            int value;
+
+            if (int.TryParse(textBox3.Text, out value))
+            {
+                //parsing successful 
+                skiJumpers[comboBox1.SelectedIndex].Points = value;
+                listBox2.Refresh();
+            }
+            else
+            {
+                //parsing failed. 
+            }
+            //skiJumpers[comboBox1.SelectedIndex].Points = Convert.ToInt32(textBox2.Text);
+            //(int.TryParse(textBox2.Text));
         }
 
         private void SkiJumpMainForm_Load(object sender, EventArgs e)
@@ -128,7 +148,7 @@ namespace SkiJumpScoreBoard
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var jumpLength = Convert.ToInt32(textBox1.Text);
+            var jumpLength = (Convert.ToInt32(textBox1.Text));
             /*
             if (comboBox1.SelectedItem != null)
             {
@@ -150,9 +170,21 @@ namespace SkiJumpScoreBoard
         private void calculatePoints(object p, Int32 jumpLength, ListBox.ObjectCollection summum, decimal jurypoints)
         {
             // skiJumpers[currentJumper].Points =
+            
 
-            var points = jumpLength * 1.5 + (double) +jurypoints;
+            var points = 0 + (double) +jurypoints;
+            if (jumpLength > Convert.ToInt32(textBox3.Text))
+            {
+                points = jumpLength * 1.8 + (double)+jurypoints;
+                points += 60;
+            }
+            else // how about under k-point
+            {
+                points = jumpLength * 1.8 + (double)+jurypoints;
+            }
             textBox2.AppendText("" + points);
+            
+            //return points;
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -171,7 +203,7 @@ namespace SkiJumpScoreBoard
             }
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
+        private void textBox3_TextChanged(object sender, EventArgs e) // points after calculation
         {
             double parsedValue;
 
@@ -179,56 +211,86 @@ namespace SkiJumpScoreBoard
             {
                 textBox3.Text = "";
             }
+            
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            double parsedValue;
+
+            if (!double.TryParse(textBox2.Text, out parsedValue))
+            {
+                textBox2.Text = "";
+            }
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
+            comboBox2.Text = null;
+            comboBox3.Text = null;
+            comboBox4.Text = null;
+            comboBox5.Text = null;
+            comboBox6.Text = null;
+
+            comboBox1.Focus();
+
         }
         /*
-        public class Int32TextBox : TextBox
-        {
-            protected override void OnKeyPress(KeyPressEventArgs e)
-            {
-                base.OnKeyPress(e);
+public class Int32TextBox : TextBox
+{
+protected override void OnKeyPress(KeyPressEventArgs e)
+{
+base.OnKeyPress(e);
 
-                NumberFormatInfo fi = CultureInfo.CurrentCulture.NumberFormat;
+NumberFormatInfo fi = CultureInfo.CurrentCulture.NumberFormat;
 
-                string c = e.KeyChar.ToString();
-                if (char.IsDigit(c, 0))
-                    return;
+string c = e.KeyChar.ToString();
+if (char.IsDigit(c, 0))
+return;
 
-                if ((SelectionStart == 0) && (c.Equals(fi.NegativeSign)))
-                    return;
+if ((SelectionStart == 0) && (c.Equals(fi.NegativeSign)))
+return;
 
-                // copy/paste
-                if ((((int)e.KeyChar == 22) || ((int)e.KeyChar == 3))
-                    && ((ModifierKeys & Keys.Control) == Keys.Control))
-                    return;
+// copy/paste
+if ((((int)e.KeyChar == 22) || ((int)e.KeyChar == 3))
+&& ((ModifierKeys & Keys.Control) == Keys.Control))
+return;
 
-                if (e.KeyChar == '\b')
-                    return;
+if (e.KeyChar == '\b')
+return;
 
-                e.Handled = true;
-            }
-        }
+e.Handled = true;
+}
+}
 
-        protected override void WndProc(ref System.Windows.Forms.Message m)
-        {
-            const int WM_PASTE = 0x0302;
-            if (m.Msg == WM_PASTE)
-            {
-                string text = Clipboard.GetText();
-                if (string.IsNullOrEmpty(text))
-                    return;
+protected override void WndProc(ref System.Windows.Forms.Message m)
+{
+const int WM_PASTE = 0x0302;
+if (m.Msg == WM_PASTE)
+{
+string text = Clipboard.GetText();
+if (string.IsNullOrEmpty(text))
+return;
 
-                if ((text.IndexOf('+') >= 0) && (SelectionStart != 0))
-                    return;
+if ((text.IndexOf('+') >= 0) && (SelectionStart != 0))
+return;
 
-                int i;
-                if (!int.TryParse(text, out i)) // change this for other integer types
-                    return;
+int i;
+if (!int.TryParse(text, out i)) // change this for other integer types
+return;
 
-                if ((i < 0) && (SelectionStart != 0))
-                    return;
-            }
-            base.WndProc(ref m);
-        }*/
+if ((i < 0) && (SelectionStart != 0))
+return;
+}
+base.WndProc(ref m);
+}*/
     }
 
 }
