@@ -10,11 +10,14 @@ using System.Windows.Forms;
 
 namespace SkiJumpScoreBoard
 {
+    // public float startingLevelInBeginning =0 ;
+
     public partial class SkiJumpMainForm : Form
     {
+        private float startingLevelInBeginning = 0;
         //private string jumpLength;
         List<SkiJumper> skiJumpers = new List<SkiJumper>();
-        List<CurrentStandings> standings = new List<CurrentStandings>(); // ei tarvitse
+        //List<CurrentStandings> standings = new List<CurrentStandings>(); // ei tarvitse
 
         public SkiJumpMainForm()
         {
@@ -68,6 +71,7 @@ namespace SkiJumpScoreBoard
                 20
             };
             int HillSize = 0;
+
             // int n = 0;
             // string jumpLenght;
 
@@ -193,29 +197,143 @@ namespace SkiJumpScoreBoard
                 // do stuff
             }
 
-            float windsummum = 12;
+            //List<> windsummum=WindMeterTextBox2.Text;
             //List<jurypointse> jurypointses =new List<jurypointse>();
 
+            /*
+            List<int> integerList = new List<int>();
+
+            try
+            {
+                string[] txtNumbers = WindMeterTextBox2.Text.Split('\n');
+                foreach (string nbr in txtNumbers)
+                {
+                    int number = int.Parse(nbr);
+                    integerList.Add(number);
+                }
+            }
+            catch (Exception exce)
+            {
+            }*/
+
+            List<float> WindList = new List<float>();
+
+            try
+            {
+                string[] txtNumbers = WindMeterTextBox2.Text.Split('\n');
+                foreach (string nbr in txtNumbers)
+                {
+                    float number = float.Parse(nbr);
+                    WindList.Add(number);
+                }
+            }
+            catch (Exception exce)
+            {
+            }
+            float windSumAvg =0;
+            for (int i=0; i < 5; i++)
+            {
+                windSumAvg  += WindList[i];
+            }
+
+            windSumAvg  = (windSumAvg  / 5);
+            string[] args2 = Environment.GetCommandLineArgs();
+
+            foreach (string arg in args2)
+            {
+                Console.WriteLine("wind {0}", WindList[2]);
+                Console.WriteLine(windSumAvg );
+                // do stuff
+            }
+            // windsummum = (windsummum / 5);
+            List<float> juryPoints = new List<float>();
+
+            try
+            {
+                string[] txtNumbers = jury1comboBox.Text.Split('\n');
+                foreach (string nbr in txtNumbers)
+                {
+                    float number = float.Parse(nbr);
+                    juryPoints.Add(number);
+                }
+            }
+            catch (Exception exce)
+            {
+            }
+            try
+            {
+                string[] txtNumbers = jury2ComboBox.Text.Split('\n'); // Cap C
+                foreach (string nbr in txtNumbers)
+                {
+                    float number = float.Parse(nbr);
+                    juryPoints.Add(number);
+                }
+            }
+            catch (Exception exce)
+            {
+            }
+            try
+            {
+                string[] txtNumbers = jury3comboBox.Text.Split('\n');
+                foreach (string nbr in txtNumbers)
+                {
+                    float number = float.Parse(nbr);
+                    juryPoints.Add(number);
+                }
+            }
+            catch (Exception exce)
+            {
+            }
+            try
+            {
+                string[] txtNumbers = jury4comboBox.Text.Split('\n');
+                foreach (string nbr in txtNumbers)
+                {
+                    float number = float.Parse(nbr);
+                    juryPoints.Add(number);
+                }
+            }
+            catch (Exception exce)
+            {
+            }
+            try
+            {
+                string[] txtNumbers = jury5comboBox.Text.Split('\n');
+                foreach (string nbr in txtNumbers)
+                {
+                    float number = float.Parse(nbr);
+                    juryPoints.Add(number);
+                }
+            }
+            catch (Exception exce)
+            {
+            }
+            /*
             var jury1points = Convert.ToDecimal(jury1comboBox.Text);
             var jury2points = Convert.ToDecimal(jury2ComboBox.Text);
             var jury3points = Convert.ToDecimal(jury3comboBox.Text);
             var jury4points = Convert.ToDecimal(jury4comboBox.Text);
             var jury5points = Convert.ToDecimal(jury5comboBox.Text);
+            */
+            //  Array ja for Array max ja array min vähenentään jurypointsista
+            // Array ja sort ja ottaa kolme keskimmäistä
 
-
-            var jurypoints = jury5points + jury4points + jury2points;
+            // var jurypoints = jury5points + jury4points + jury2points;
 
             // TODO!!! here wwe ggooo
             var currentJumper = competitorNameComboBox.SelectedIndex;
 
-            calculatePoints(currentJumper, jumpLength3, windsummum, jurypoints);
+            calculatePoints(currentJumper, jumpLength3, windSumAvg , juryPoints);
 
         }
 
-        private void calculatePoints(object p, Int32 jumpLength2, float summum, decimal jurypoints)
+        private void calculatePoints(object p, Int32 jumpLength2, float sumAvg, List<float> juryPoints)
         {
+            // calculate jump length +judges +wind + gate = sum
             // skiJumpers[currentJumper].Points =
-            var startingLevel = 0;
+            var startingLevel = float.Parse(startGateComboBox.Text);
+            // Tuulen voimakkuuden keskiarvo x (K - piste - 36) / 20
+            
 
             var jury1points = Convert.ToDecimal(jury1comboBox.Text);
             var jury2points = Convert.ToDecimal(jury2ComboBox.Text);
@@ -226,7 +344,11 @@ namespace SkiJumpScoreBoard
 
             var points = 0 + (double) +jurypoints;
             var hillSize = Convert.ToInt32(hillSizeTextBox.Text);
-            
+
+            if (startingLevel < startingLevelInBeginning)
+            {
+                
+            }
 
             if (jumpLength2 > Convert.ToInt32(hillSizeTextBox.Text)) // hill size =textbox3
             {
@@ -238,8 +360,11 @@ namespace SkiJumpScoreBoard
             {
                 points = 60 - ((hillSize-jumpLength2) * 1.8);
             }
+            points += (sumAvg * (hillSize-36)/20); // K-point effects on "36" somehow
+
             pointsTextBox.AppendText("" + points);
-            
+
+            //points += sumAvg * (hillSize);
             //return points;
         }
 
@@ -290,6 +415,7 @@ namespace SkiJumpScoreBoard
             // sending information forward
             
             var value= float.Parse(pointsTextBox.Text);
+
             skiJumpers[competitorNameComboBox.SelectedIndex].Points = value;
             this.standingsListBox.DisplayMember = (skiJumpers[competitorNameComboBox.SelectedIndex].CompetitorName);
 
@@ -317,6 +443,7 @@ namespace SkiJumpScoreBoard
                 Console.WriteLine("{0}", skiJumpers[competitorNameComboBox.SelectedIndex].CompetitorName);
                 Console.WriteLine("{0}", skiJumpers[competitorNameComboBox.SelectedIndex].Points);
                 Console.WriteLine("{0}", skiJumpers[competitorNameComboBox.SelectedIndex].Id);
+                Console.WriteLine();
                 // do stuff
             }
 
