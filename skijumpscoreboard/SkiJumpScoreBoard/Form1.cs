@@ -12,14 +12,15 @@ namespace SkiJumpScoreBoard
 {
     public partial class SkiJumpMainForm : Form
     {
-        private string jumpLength;
+        //private string jumpLength;
+        List<SkiJumper> skiJumpers = new List<SkiJumper>();
 
         public SkiJumpMainForm()
         {
             InitializeComponent();
             
 
-            List<SkiJumper> skiJumpers = new List<SkiJumper>();
+            //List<SkiJumper> skiJumpers = new List<SkiJumper>();
             List<float> juryPoints = new List<float>()
             {
                 0,
@@ -66,7 +67,7 @@ namespace SkiJumpScoreBoard
             };
             int HillSize = 0;
             // int n = 0;
-            string jumpLenght;
+            // string jumpLenght;
 
             skiJumpers.Add(new SkiJumper(1, "Adam Malycz", 0));
             skiJumpers.Add(new SkiJumper(2, "Martin Schmitdt", 0));
@@ -108,10 +109,10 @@ namespace SkiJumpScoreBoard
             
             // TODO!!! fix text box3 -> points
             //if textBox3_TextChanged() == true
-
+            /*
             int value;
 
-            if (int.TryParse(textBox3.Text, out value))
+            if (int.TryParse(textBox2.Text, out value)) 
             {
                 //parsing successful 
                 skiJumpers[comboBox1.SelectedIndex].Points = value;
@@ -121,6 +122,7 @@ namespace SkiJumpScoreBoard
             {
                 //parsing failed. 
             }
+            */
             //skiJumpers[comboBox1.SelectedIndex].Points = Convert.ToInt32(textBox2.Text);
             //(int.TryParse(textBox2.Text));
         }
@@ -128,7 +130,7 @@ namespace SkiJumpScoreBoard
         private void SkiJumpMainForm_Load(object sender, EventArgs e)
         {
             //CanFocus.textBox3;
-            textBox3.Focus();
+            textBox3.Focus();// hill size
             //Control.Focus();
         }
 
@@ -148,7 +150,10 @@ namespace SkiJumpScoreBoard
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var jumpLength = (Convert.ToInt32(textBox1.Text));
+            var jumpLength3 = (Convert.ToInt32(textBox1.Text));
+
+            //TODO!!! tyhjä klikkaus pois
+
             /*
             if (comboBox1.SelectedItem != null)
             {
@@ -163,24 +168,24 @@ namespace SkiJumpScoreBoard
             var jurypoints = Convert.ToDecimal(comboBox2.Text);
             var currentJumper = comboBox1.SelectedIndex;
 
-            calculatePoints(currentJumper, jumpLength, windsummum, jurypoints);
+            calculatePoints(currentJumper, jumpLength3, windsummum, jurypoints);
 
         }
 
-        private void calculatePoints(object p, Int32 jumpLength, ListBox.ObjectCollection summum, decimal jurypoints)
+        private void calculatePoints(object p, Int32 jumpLength2, ListBox.ObjectCollection summum, decimal jurypoints)
         {
             // skiJumpers[currentJumper].Points =
             
 
             var points = 0 + (double) +jurypoints;
-            if (jumpLength > Convert.ToInt32(textBox3.Text))
+            if (jumpLength2 > Convert.ToInt32(textBox3.Text)) // hill size =textbox3
             {
-                points = jumpLength * 1.8 + (double)+jurypoints;
+                points = jumpLength2 * 1.8 + (double)+jurypoints;
                 points += 60;
             }
             else // how about under k-point
             {
-                points = jumpLength * 1.8 + (double)+jurypoints;
+                points = jumpLength2 * 1.8 + (double)+jurypoints;
             }
             textBox2.AppendText("" + points);
             
@@ -231,6 +236,28 @@ namespace SkiJumpScoreBoard
 
         private void button2_Click(object sender, EventArgs e)
         {
+            // sending information forward
+            
+            var value= float.Parse(textBox2.Text);
+            skiJumpers[comboBox1.SelectedIndex].Points = value;
+            this.listBox2.DisplayMember = (skiJumpers[comboBox1.SelectedIndex].CompetitorName);
+           // listBox2.DataSource = skiJumpers[comboBox1.SelectedIndex].Points;
+            listBox2.Refresh();
+            // textBox4.AppendText("{0}", skiJumpers[comboBox1.SelectedIndex].CompetitorName);
+            /*
+            if (int.TryParse(textBox2.Text)) // points
+            {
+                //parsing successful 
+                skiJumpers[comboBox1.SelectedIndex].Points = value;
+                listBox2.Refresh();
+            }
+            else
+            {
+            
+            //parsing failed. 
+        }*/
+
+            //clearing for next jump
             textBox1.Text = "";
             textBox2.Text = "";
             comboBox2.Text = null;
@@ -240,6 +267,11 @@ namespace SkiJumpScoreBoard
             comboBox6.Text = null;
 
             comboBox1.Focus();
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
 
         }
         /*

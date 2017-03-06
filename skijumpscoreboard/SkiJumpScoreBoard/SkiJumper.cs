@@ -5,10 +5,10 @@
 
         private int _id;
         private string _competitorName;
-        private int _points;
+        private float _points;
 
 
-        public SkiJumper(int id, string competitorName, int points)
+        public SkiJumper(int id, string competitorName, float points)
         {
             _id = id;
             _competitorName = competitorName;
@@ -27,7 +27,7 @@
             set { _competitorName = value; }
         }
 
-        public int Points
+        public float Points
         {
             get { return _points; }
             set { _points = value; }

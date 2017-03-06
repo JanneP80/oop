@@ -57,12 +57,15 @@
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.skiJumperBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label9 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.skiJumperBindingSource)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -189,7 +192,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft YaHei UI", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(230, 9);
+            this.label5.Location = new System.Drawing.Point(201, 9);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(487, 30);
             this.label5.TabIndex = 12;
@@ -225,6 +228,7 @@
             // 
             // textBox2
             // 
+            this.textBox2.Enabled = false;
             this.textBox2.Location = new System.Drawing.Point(273, 363);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 22);
@@ -322,7 +326,7 @@
             this.listBox2.ItemHeight = 16;
             this.listBox2.Location = new System.Drawing.Point(60, 336);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(149, 116);
+            this.listBox2.Size = new System.Drawing.Size(145, 116);
             this.listBox2.TabIndex = 25;
             this.listBox2.ValueMember = "Points";
             this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
@@ -339,6 +343,24 @@
             this.label9.Size = new System.Drawing.Size(122, 17);
             this.label9.TabIndex = 26;
             this.label9.Text = "Current Standings";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Location = new System.Drawing.Point(12, 141);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(820, 340);
+            this.groupBox1.TabIndex = 27;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Round 1";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(261, 261);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 22);
+            this.textBox4.TabIndex = 0;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // SkiJumpMainForm
             // 
@@ -372,6 +394,7 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.groupBox1);
             this.Name = "SkiJumpMainForm";
             this.Text = "Ski Jump Score Board";
             this.Load += new System.EventHandler(this.SkiJumpMainForm_Load);
@@ -381,6 +404,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.skiJumperBindingSource)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -415,6 +440,8 @@
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.BindingSource skiJumperBindingSource;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }
 
