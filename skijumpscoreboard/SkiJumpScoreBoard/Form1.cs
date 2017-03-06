@@ -170,7 +170,19 @@ namespace SkiJumpScoreBoard
             }*/
 
             //var jumpLength = 123;
+
+
             //float windsummum = float.Parse(textBox5.Multiline);
+            //TODO!!! korjaa sopimaan omaan
+            string[] tempArray = textBox1.Lines;
+
+            // Loop through the array and send the contents of the array to debug window.
+            for (int counter = 0; counter < tempArray.Length; counter++)
+            {
+                System.Diagnostics.Debug.WriteLine(tempArray[counter]);
+            }
+
+
             float windsummum = 12;
             var jurypoints = Convert.ToDecimal(comboBox2.Text);
             var currentJumper = comboBox1.SelectedIndex;
