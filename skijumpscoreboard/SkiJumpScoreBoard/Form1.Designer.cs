@@ -396,6 +396,7 @@
             this.startGateComboBox.Name = "startGateComboBox";
             this.startGateComboBox.Size = new System.Drawing.Size(121, 24);
             this.startGateComboBox.TabIndex = 28;
+            this.startGateComboBox.Text = "0";
             this.startGateComboBox.SelectedIndexChanged += new System.EventHandler(this.startGateComboBox_SelectedIndexChanged);
             // 
             // label10
@@ -403,9 +404,9 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(449, 79);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(107, 17);
+            this.label10.Size = new System.Drawing.Size(353, 17);
             this.label10.TabIndex = 29;
-            this.label10.Text = "StartGate Level";
+            this.label10.Text = "StartGate Level Change compared to Competition start";
             // 
             // SkiJumpMainForm
             // 

@@ -237,6 +237,11 @@ namespace SkiJumpScoreBoard
             }
 
             windSumAvg  = (windSumAvg  / 5);
+            //rounding
+            windSumAvg = windSumAvg * 2;
+            Math.Round(windSumAvg, MidpointRounding.AwayFromZero);
+            windSumAvg = windSumAvg / 2;
+
             string[] args2 = Environment.GetCommandLineArgs();
 
             foreach (string arg in args2)
@@ -245,6 +250,7 @@ namespace SkiJumpScoreBoard
                 Console.WriteLine(windSumAvg );
                 // do stuff
             }
+
             // windsummum = (windsummum / 5);
             List<float> juryPoints = new List<float>();
 
@@ -333,36 +339,64 @@ namespace SkiJumpScoreBoard
             // skiJumpers[currentJumper].Points =
             var startingLevel = float.Parse(startGateComboBox.Text);
             // Tuulen voimakkuuden keskiarvo x (K - piste - 36) / 20
-            
+            //var _jurypoints;
 
+            juryPoints.Sort((x, y) => x.CompareTo(y));
+            var jurypoints = juryPoints[1] + juryPoints[2] + juryPoints[3];
+            /*
             var jury1points = Convert.ToDecimal(jury1comboBox.Text);
             var jury2points = Convert.ToDecimal(jury2ComboBox.Text);
             var jury3points = Convert.ToDecimal(jury3comboBox.Text);
             var jury4points = Convert.ToDecimal(jury4comboBox.Text);
             var jury5points = Convert.ToDecimal(jury5comboBox.Text);
+            */
+            string[] args2 = Environment.GetCommandLineArgs();
 
-
-            var points = 0 + (double) +jurypoints;
-            var hillSize = Convert.ToInt32(hillSizeTextBox.Text);
-
-            if (startingLevel < startingLevelInBeginning)
+            foreach (string arg in args2)
             {
-                
+               // Console.WriteLine("wind {0}", WindList[2]);
+                Console.WriteLine("jury points 3, {0}", jurypoints);
+                // do stuff
+            }
+            // windsummum = (windsummum / 5);
+            //List<float> juryPoints = new List<float>();
+
+
+            var points = 0 + (double) + jurypoints;
+            var hillSize = Convert.ToInt32(hillSizeTextBox.Text);
+            
+            if (startingLevel < startingLevelInBeginning) // staring level compensator
+            {
+                // jos lähtee ylempää vähennetään pituusmetreinä 1m = 5m eli 5x lavanmuutos
+                // näin voi laittaa kertoimeksi -5, jolloin menee suoraan syötetyllä lavamuutoksella
+                var levelEffect = startingLevel * -5;
+                points += levelEffect;
+
+            }
+
+            if (startingLevel > startingLevelInBeginning) // staring level compensator
+            {
+                // jos lähtee ylempää vähennetään pituusmetreinä 1m = 5m eli 5x lavanmuutos
+                // näin voi laittaa kertoimeksi -5, jolloin menee suoraan syötetyllä lavamuutoksella
+                var levelEffect = startingLevel * -5;
+                points += levelEffect;
+
             }
 
             if (jumpLength2 > Convert.ToInt32(hillSizeTextBox.Text)) // hill size =textbox3
             {
                 //points += 60;
-                points = 60+ ((jumpLength2-hillSize) * 1.8);
+                points += 60+ ((jumpLength2-hillSize) * 1.8); // jump over K
                 
             }
             else // how about under k-point
             {
-                points = 60 - ((hillSize-jumpLength2) * 1.8);
+                points += 60 - ((hillSize-jumpLength2) * 1.8);
             }
-            points += (sumAvg * (hillSize-36)/20); // K-point effects on "36" somehow
-
+            points += (sumAvg * (hillSize-36)/20); // K-point effects on "36" somehow // wind
+            
             pointsTextBox.AppendText("" + points);
+
 
             //points += sumAvg * (hillSize);
             //return points;
