@@ -29,37 +29,40 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.jumpLengthTextBox = new System.Windows.Forms.TextBox();
+            this.windMeterListBox = new System.Windows.Forms.ListBox();
+            this.competitorNameComboBox = new System.Windows.Forms.ComboBox();
+            this.jury1comboBox = new System.Windows.Forms.ComboBox();
+            this.jury2ComboBox = new System.Windows.Forms.ComboBox();
+            this.jury3comboBox = new System.Windows.Forms.ComboBox();
+            this.jury4comboBox = new System.Windows.Forms.ComboBox();
+            this.jury5comboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button1calculate = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.pointsTextBox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.hillSizeTextBox = new System.Windows.Forms.TextBox();
+            this.button2next = new System.Windows.Forms.Button();
+            this.standingsListBox = new System.Windows.Forms.ListBox();
             this.skiJumperBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.WindMeterTextBox2 = new System.Windows.Forms.TextBox();
+            this.textBox4temp = new System.Windows.Forms.TextBox();
+            this.skiJumperBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.startGateComboBox = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -67,91 +70,92 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.skiJumperBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.skiJumperBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // jumpLengthTextBox
             // 
-            this.textBox1.AutoCompleteCustomSource.AddRange(new string[] {
+            this.jumpLengthTextBox.AutoCompleteCustomSource.AddRange(new string[] {
             "JumpLength"});
-            this.textBox1.Location = new System.Drawing.Point(273, 218);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.jumpLengthTextBox.Location = new System.Drawing.Point(273, 218);
+            this.jumpLengthTextBox.Name = "jumpLengthTextBox";
+            this.jumpLengthTextBox.Size = new System.Drawing.Size(100, 22);
+            this.jumpLengthTextBox.TabIndex = 2;
+            this.jumpLengthTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // listBox1
+            // windMeterListBox
             // 
-            this.listBox1.DisplayMember = "int wind";
-            this.listBox1.FormatString = "N2";
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Items.AddRange(new object[] {
+            this.windMeterListBox.DisplayMember = "int wind";
+            this.windMeterListBox.FormatString = "N2";
+            this.windMeterListBox.FormattingEnabled = true;
+            this.windMeterListBox.ItemHeight = 16;
+            this.windMeterListBox.Items.AddRange(new object[] {
             "Wind1",
             "Wind2",
             "Wind3",
             "Wind4",
             "Wind5"});
-            this.listBox1.Location = new System.Drawing.Point(684, 200);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listBox1.Size = new System.Drawing.Size(120, 84);
-            this.listBox1.TabIndex = 8;
-            this.listBox1.ValueMember = "int wind";
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.windMeterListBox.Location = new System.Drawing.Point(626, 75);
+            this.windMeterListBox.Name = "windMeterListBox";
+            this.windMeterListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.windMeterListBox.Size = new System.Drawing.Size(44, 84);
+            this.windMeterListBox.TabIndex = 8;
+            this.windMeterListBox.ValueMember = "int wind";
+            this.windMeterListBox.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
-            // comboBox1
+            // competitorNameComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(60, 218);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(145, 24);
-            this.comboBox1.TabIndex = 1;
+            this.competitorNameComboBox.FormattingEnabled = true;
+            this.competitorNameComboBox.Location = new System.Drawing.Point(60, 218);
+            this.competitorNameComboBox.Name = "competitorNameComboBox";
+            this.competitorNameComboBox.Size = new System.Drawing.Size(145, 24);
+            this.competitorNameComboBox.TabIndex = 1;
             // 
-            // comboBox2
+            // jury1comboBox
             // 
-            this.comboBox2.FormatString = "N1";
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(452, 216);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(75, 24);
-            this.comboBox2.TabIndex = 3;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.jury1comboBox.FormatString = "N1";
+            this.jury1comboBox.FormattingEnabled = true;
+            this.jury1comboBox.Location = new System.Drawing.Point(452, 216);
+            this.jury1comboBox.Name = "jury1comboBox";
+            this.jury1comboBox.Size = new System.Drawing.Size(75, 24);
+            this.jury1comboBox.TabIndex = 3;
+            this.jury1comboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
-            // comboBox3
+            // jury2ComboBox
             // 
-            this.comboBox3.FormatString = "N1";
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(452, 246);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(75, 24);
-            this.comboBox3.TabIndex = 4;
+            this.jury2ComboBox.FormatString = "N1";
+            this.jury2ComboBox.FormattingEnabled = true;
+            this.jury2ComboBox.Location = new System.Drawing.Point(452, 246);
+            this.jury2ComboBox.Name = "jury2ComboBox";
+            this.jury2ComboBox.Size = new System.Drawing.Size(75, 24);
+            this.jury2ComboBox.TabIndex = 4;
             // 
-            // comboBox4
+            // jury3comboBox
             // 
-            this.comboBox4.FormatString = "N1";
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(452, 276);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(75, 24);
-            this.comboBox4.TabIndex = 5;
+            this.jury3comboBox.FormatString = "N1";
+            this.jury3comboBox.FormattingEnabled = true;
+            this.jury3comboBox.Location = new System.Drawing.Point(452, 276);
+            this.jury3comboBox.Name = "jury3comboBox";
+            this.jury3comboBox.Size = new System.Drawing.Size(75, 24);
+            this.jury3comboBox.TabIndex = 5;
             // 
-            // comboBox5
+            // jury4comboBox
             // 
-            this.comboBox5.FormatString = "N1";
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(452, 306);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(75, 24);
-            this.comboBox5.TabIndex = 6;
+            this.jury4comboBox.FormatString = "N1";
+            this.jury4comboBox.FormattingEnabled = true;
+            this.jury4comboBox.Location = new System.Drawing.Point(452, 306);
+            this.jury4comboBox.Name = "jury4comboBox";
+            this.jury4comboBox.Size = new System.Drawing.Size(75, 24);
+            this.jury4comboBox.TabIndex = 6;
             // 
-            // comboBox6
+            // jury5comboBox
             // 
-            this.comboBox6.FormatString = "N1";
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(452, 336);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(75, 24);
-            this.comboBox6.TabIndex = 7;
+            this.jury5comboBox.FormatString = "N1";
+            this.jury5comboBox.FormattingEnabled = true;
+            this.jury5comboBox.Location = new System.Drawing.Point(452, 336);
+            this.jury5comboBox.Name = "jury5comboBox";
+            this.jury5comboBox.Size = new System.Drawing.Size(75, 24);
+            this.jury5comboBox.TabIndex = 7;
             // 
             // label1
             // 
@@ -185,9 +189,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(637, 198);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 17);
+            this.label4.Size = new System.Drawing.Size(80, 17);
             this.label4.TabIndex = 11;
-            this.label4.Text = "Wind";
+            this.label4.Text = "Wind Meter";
             // 
             // label5
             // 
@@ -199,15 +203,15 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "Ski Jump Score Board Points Calculator";
             // 
-            // button1
+            // button1calculate
             // 
-            this.button1.Location = new System.Drawing.Point(273, 304);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(124, 26);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Calculate points";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1calculate.Location = new System.Drawing.Point(273, 304);
+            this.button1calculate.Name = "button1calculate";
+            this.button1calculate.Size = new System.Drawing.Size(124, 26);
+            this.button1calculate.TabIndex = 13;
+            this.button1calculate.Text = "Calculate points";
+            this.button1calculate.UseVisualStyleBackColor = true;
+            this.button1calculate.Click += new System.EventHandler(this.button1_Click);
             // 
             // label6
             // 
@@ -227,14 +231,14 @@
             this.label7.TabIndex = 15;
             this.label7.Text = "points";
             // 
-            // textBox2
+            // pointsTextBox
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(273, 363);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
-            this.textBox2.TabIndex = 16;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.pointsTextBox.Enabled = false;
+            this.pointsTextBox.Location = new System.Drawing.Point(273, 363);
+            this.pointsTextBox.Name = "pointsTextBox";
+            this.pointsTextBox.Size = new System.Drawing.Size(100, 22);
+            this.pointsTextBox.TabIndex = 16;
+            this.pointsTextBox.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // pictureBox1
             // 
@@ -296,41 +300,41 @@
             this.label8.TabIndex = 23;
             this.label8.Text = "Input Hill Size (K-point)";
             // 
-            // textBox3
+            // hillSizeTextBox
             // 
-            this.textBox3.AutoCompleteCustomSource.AddRange(new string[] {
+            this.hillSizeTextBox.AutoCompleteCustomSource.AddRange(new string[] {
             "JumpLength"});
-            this.textBox3.Location = new System.Drawing.Point(60, 103);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(145, 22);
-            this.textBox3.TabIndex = 0;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.hillSizeTextBox.Location = new System.Drawing.Point(60, 103);
+            this.hillSizeTextBox.Name = "hillSizeTextBox";
+            this.hillSizeTextBox.Size = new System.Drawing.Size(145, 22);
+            this.hillSizeTextBox.TabIndex = 0;
+            this.hillSizeTextBox.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
-            // button2
+            // button2next
             // 
-            this.button2.Location = new System.Drawing.Point(521, 397);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(142, 28);
-            this.button2.TabIndex = 24;
-            this.button2.Text = "Next Competitor";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2next.Location = new System.Drawing.Point(521, 397);
+            this.button2next.Name = "button2next";
+            this.button2next.Size = new System.Drawing.Size(142, 28);
+            this.button2next.TabIndex = 24;
+            this.button2next.Text = "Next Competitor";
+            this.button2next.UseVisualStyleBackColor = true;
+            this.button2next.Click += new System.EventHandler(this.button2_Click);
             // 
-            // listBox2
+            // standingsListBox
             // 
-            this.listBox2.DataBindings.Add(new System.Windows.Forms.Binding("SelectedIndex", this.skiJumperBindingSource, "Id", true));
-            this.listBox2.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.skiJumperBindingSource, "CompetitorName", true));
-            this.listBox2.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.skiJumperBindingSource, "Points", true));
-            this.listBox2.DataSource = this.skiJumperBindingSource;
-            this.listBox2.DisplayMember = "CompetitorName";
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 16;
-            this.listBox2.Location = new System.Drawing.Point(60, 336);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(145, 116);
-            this.listBox2.TabIndex = 25;
-            this.listBox2.ValueMember = "Points";
-            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
+            this.standingsListBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedIndex", this.skiJumperBindingSource, "Id", true));
+            this.standingsListBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.skiJumperBindingSource, "CompetitorName", true));
+            this.standingsListBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.skiJumperBindingSource, "Points", true));
+            this.standingsListBox.DataSource = this.skiJumperBindingSource;
+            this.standingsListBox.DisplayMember = "CompetitorName";
+            this.standingsListBox.FormattingEnabled = true;
+            this.standingsListBox.ItemHeight = 16;
+            this.standingsListBox.Location = new System.Drawing.Point(60, 336);
+            this.standingsListBox.Name = "standingsListBox";
+            this.standingsListBox.Size = new System.Drawing.Size(145, 116);
+            this.standingsListBox.TabIndex = 25;
+            this.standingsListBox.ValueMember = "Points";
+            this.standingsListBox.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
             // 
             // skiJumperBindingSource
             // 
@@ -347,9 +351,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.listBox1);
+            this.groupBox1.Controls.Add(this.WindMeterTextBox2);
+            this.groupBox1.Controls.Add(this.textBox4temp);
+            this.groupBox1.Controls.Add(this.windMeterListBox);
             this.groupBox1.Location = new System.Drawing.Point(12, 141);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(820, 340);
@@ -357,61 +361,85 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Round 1";
             // 
-            // textBox4
+            // WindMeterTextBox2
             // 
-            this.textBox4.Location = new System.Drawing.Point(261, 261);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 22);
-            this.textBox4.TabIndex = 0;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
-            // 
-            // textBox5
-            // 
-            this.textBox5.AutoCompleteCustomSource.AddRange(new string[] {
+            this.WindMeterTextBox2.AutoCompleteCustomSource.AddRange(new string[] {
             "1",
             "2",
             "3",
             "4",
             "5"});
-            this.textBox5.Location = new System.Drawing.Point(628, 77);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 88);
-            this.textBox5.TabIndex = 1;
-            this.textBox5.Tag = "windsummum";
-            this.textBox5.Text = "1\r\n2\r\n3\r\n4\r\n5";
+            this.WindMeterTextBox2.Location = new System.Drawing.Point(676, 75);
+            this.WindMeterTextBox2.Multiline = true;
+            this.WindMeterTextBox2.Name = "WindMeterTextBox2";
+            this.WindMeterTextBox2.Size = new System.Drawing.Size(62, 88);
+            this.WindMeterTextBox2.TabIndex = 1;
+            this.WindMeterTextBox2.Tag = "windsummum";
+            this.WindMeterTextBox2.Text = "1\r\n2\r\n3\r\n4\r\n5";
+            // 
+            // textBox4temp
+            // 
+            this.textBox4temp.Location = new System.Drawing.Point(261, 261);
+            this.textBox4temp.Name = "textBox4temp";
+            this.textBox4temp.Size = new System.Drawing.Size(100, 22);
+            this.textBox4temp.TabIndex = 0;
+            this.textBox4temp.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            // 
+            // skiJumperBindingSource1
+            // 
+            this.skiJumperBindingSource1.DataSource = typeof(SkiJumpScoreBoard.SkiJumper);
+            // 
+            // startGateComboBox
+            // 
+            this.startGateComboBox.FormattingEnabled = true;
+            this.startGateComboBox.Location = new System.Drawing.Point(452, 99);
+            this.startGateComboBox.Name = "startGateComboBox";
+            this.startGateComboBox.Size = new System.Drawing.Size(121, 24);
+            this.startGateComboBox.TabIndex = 28;
+            this.startGateComboBox.SelectedIndexChanged += new System.EventHandler(this.startGateComboBox_SelectedIndexChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(449, 79);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(107, 17);
+            this.label10.TabIndex = 29;
+            this.label10.Text = "StartGate Level";
             // 
             // SkiJumpMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(844, 493);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.startGateComboBox);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.standingsListBox);
+            this.Controls.Add(this.button2next);
+            this.Controls.Add(this.hillSizeTextBox);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.pointsTextBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button1calculate);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox6);
-            this.Controls.Add(this.comboBox5);
-            this.Controls.Add(this.comboBox4);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.jury5comboBox);
+            this.Controls.Add(this.jury4comboBox);
+            this.Controls.Add(this.jury3comboBox);
+            this.Controls.Add(this.jury2ComboBox);
+            this.Controls.Add(this.jury1comboBox);
+            this.Controls.Add(this.competitorNameComboBox);
+            this.Controls.Add(this.jumpLengthTextBox);
             this.Controls.Add(this.groupBox1);
             this.Name = "SkiJumpMainForm";
             this.Text = "Ski Jump Score Board";
@@ -424,43 +452,47 @@
             ((System.ComponentModel.ISupportInitialize)(this.skiJumperBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.skiJumperBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox competitorNameComboBox;
+        private System.Windows.Forms.ComboBox jury1comboBox;
+        private System.Windows.Forms.ComboBox jury2ComboBox;
+        private System.Windows.Forms.ComboBox jury3comboBox;
+        private System.Windows.Forms.ComboBox jury4comboBox;
+        private System.Windows.Forms.ComboBox jury5comboBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button1calculate;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox jumpLengthTextBox;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.TextBox pointsTextBox;
+        private System.Windows.Forms.ListBox windMeterListBox;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.TextBox hillSizeTextBox;
+        private System.Windows.Forms.Button button2next;
+        private System.Windows.Forms.ListBox standingsListBox;
         private System.Windows.Forms.BindingSource skiJumperBindingSource;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox4temp;
+        private System.Windows.Forms.TextBox WindMeterTextBox2;
+        private System.Windows.Forms.BindingSource skiJumperBindingSource1;
+        private System.Windows.Forms.ComboBox startGateComboBox;
+        private System.Windows.Forms.Label label10;
     }
 }
 
