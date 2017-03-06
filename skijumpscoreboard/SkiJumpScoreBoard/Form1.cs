@@ -21,7 +21,8 @@ namespace SkiJumpScoreBoard
             
 
             //List<SkiJumper> skiJumpers = new List<SkiJumper>();
-            List<float> juryPoints = new List<float>()
+            // List<float> juryPoints = new List<float>()
+            object[] juryPoints =
             {
                 0,
                 0.5F,
@@ -85,12 +86,17 @@ namespace SkiJumpScoreBoard
             //   textBox1.AppendText("Please insert jump length");
             //}
 
-            comboBox2.DataSource = juryPoints;
+            comboBox2.Items.AddRange(juryPoints);
+            comboBox3.Items.AddRange(juryPoints);
+            comboBox4.Items.AddRange(juryPoints);
+            comboBox5.Items.AddRange(juryPoints);
+            comboBox6.Items.AddRange(juryPoints);
+            /*
             comboBox3.DataSource = juryPoints;
             comboBox4.DataSource = juryPoints;
             comboBox5.DataSource = juryPoints;
             comboBox6.DataSource = juryPoints;
-
+            */
             // var tempvar = Convert.ToInt32(textBox1.Text);
             //skiJumpers[currentJumper].Points = Convert.ToInt32(textBox1.Text);
             //skiJumpers[currentJumper].Points = textBox1.Text;
@@ -106,7 +112,7 @@ namespace SkiJumpScoreBoard
             }*/
             //int ii = int.Parse(textBox3.Text);
             //skiJumpers[comboBox1.SelectedIndex].Points = ii;
-            
+
             // TODO!!! fix text box3 -> points
             //if textBox3_TextChanged() == true
             /*
@@ -164,7 +170,8 @@ namespace SkiJumpScoreBoard
             }*/
 
             //var jumpLength = 123;
-            var windsummum = listBox1.Items;
+            //float windsummum = float.Parse(textBox5.Multiline);
+            float windsummum = 12;
             var jurypoints = Convert.ToDecimal(comboBox2.Text);
             var currentJumper = comboBox1.SelectedIndex;
 
@@ -172,7 +179,7 @@ namespace SkiJumpScoreBoard
 
         }
 
-        private void calculatePoints(object p, Int32 jumpLength2, ListBox.ObjectCollection summum, decimal jurypoints)
+        private void calculatePoints(object p, Int32 jumpLength2, float summum, decimal jurypoints)
         {
             // skiJumpers[currentJumper].Points =
             
