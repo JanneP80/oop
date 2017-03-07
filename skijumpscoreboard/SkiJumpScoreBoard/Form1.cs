@@ -23,7 +23,6 @@ namespace SkiJumpScoreBoard
         {
             InitializeComponent();
             
-
             //List<SkiJumper> skiJumpers = new List<SkiJumper>();
             // List<float> juryPoints = new List<float>()
             object[] juryPoints =
@@ -140,16 +139,11 @@ namespace SkiJumpScoreBoard
 
         private void SkiJumpMainForm_Load(object sender, EventArgs e)
         {
-            //CanFocus.textBox3;
             hillSizeTextBox.Focus();// hill size
-            //Control.Focus();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            // Jump Length
-            // 
-            //  jumpLenght = textBox1.Text;
             double parsedValue;
 
             if (!double.TryParse(jumpLengthTextBox.Text, out parsedValue))
@@ -176,8 +170,7 @@ namespace SkiJumpScoreBoard
 
             //var jumpLength = 123;
 
-
-            //float windsummum = float.Parse(textBox5.Multiline);
+            
             //TODO!!! korjaa sopimaan omaan
             string[] tempArray = jumpLengthTextBox.Lines;
 
@@ -188,35 +181,14 @@ namespace SkiJumpScoreBoard
 
             }
             
-            
             string[] args = Environment.GetCommandLineArgs();
-
             foreach (string arg in args)
             {
-                Console.WriteLine("Hello");
+                Console.WriteLine("Checking calculations: ");
                 // do stuff
             }
 
-            //List<> windsummum=WindMeterTextBox2.Text;
-            //List<jurypointse> jurypointses =new List<jurypointse>();
-
-            /*
-            List<int> integerList = new List<int>();
-
-            try
-            {
-                string[] txtNumbers = WindMeterTextBox2.Text.Split('\n');
-                foreach (string nbr in txtNumbers)
-                {
-                    int number = int.Parse(nbr);
-                    integerList.Add(number);
-                }
-            }
-            catch (Exception exce)
-            {
-            }*/
-
-            List<float> WindList = new List<float>();
+            List<float> WindList = new List<float>(); // windmeter list
 
             try
             {
@@ -243,16 +215,14 @@ namespace SkiJumpScoreBoard
             windSumAvg = windSumAvg / 2;
 
             string[] args2 = Environment.GetCommandLineArgs();
-
             foreach (string arg in args2)
             {
-                Console.WriteLine("wind {0}", WindList[2]);
-                Console.WriteLine(windSumAvg );
-                // do stuff
+                //Console.WriteLine("wind {0}", WindList[2]);
+                Console.WriteLine("wind {0}", windSumAvg );
             }
 
-            // windsummum = (windsummum / 5);
-            List<float> juryPoints = new List<float>();
+            
+            List<float> juryPoints = new List<float>(); // jury points list x5 for each jury member
 
             try
             {
@@ -314,23 +284,13 @@ namespace SkiJumpScoreBoard
             catch (Exception exce)
             {
             }
-            /*
-            var jury1points = Convert.ToDecimal(jury1comboBox.Text);
-            var jury2points = Convert.ToDecimal(jury2ComboBox.Text);
-            var jury3points = Convert.ToDecimal(jury3comboBox.Text);
-            var jury4points = Convert.ToDecimal(jury4comboBox.Text);
-            var jury5points = Convert.ToDecimal(jury5comboBox.Text);
-            */
+            
             //  Array ja for Array max ja array min vähenentään jurypointsista
-            // Array ja sort ja ottaa kolme keskimmäistä
-
-            // var jurypoints = jury5points + jury4points + jury2points;
-
-            // TODO!!! here wwe ggooo
+            // Array ja sort ja ottaa kolme keskimmäistä // toimii
+            
             var currentJumper = competitorNameComboBox.SelectedIndex;
 
             calculatePoints(currentJumper, jumpLength3, windSumAvg , juryPoints);
-
         }
 
         private void calculatePoints(object p, Int32 jumpLength2, float sumAvg, List<float> juryPoints)
@@ -343,25 +303,16 @@ namespace SkiJumpScoreBoard
 
             juryPoints.Sort((x, y) => x.CompareTo(y));
             var jurypoints = juryPoints[1] + juryPoints[2] + juryPoints[3];
-            /*
-            var jury1points = Convert.ToDecimal(jury1comboBox.Text);
-            var jury2points = Convert.ToDecimal(jury2ComboBox.Text);
-            var jury3points = Convert.ToDecimal(jury3comboBox.Text);
-            var jury4points = Convert.ToDecimal(jury4comboBox.Text);
-            var jury5points = Convert.ToDecimal(jury5comboBox.Text);
-            */
+            
             string[] args2 = Environment.GetCommandLineArgs();
 
             foreach (string arg in args2)
             {
                // Console.WriteLine("wind {0}", WindList[2]);
-                Console.WriteLine("jury points 3, {0}", jurypoints);
+                Console.WriteLine("jury points, {0}", jurypoints);
                 // do stuff
             }
-            // windsummum = (windsummum / 5);
-            //List<float> juryPoints = new List<float>();
-
-
+            
             var points = 0 + (double) + jurypoints;
             var hillSize = Convert.ToInt32(hillSizeTextBox.Text);
             
@@ -372,6 +323,12 @@ namespace SkiJumpScoreBoard
                 var levelEffect = startingLevel * -5;
                 points += levelEffect;
 
+                string[] args3 = Environment.GetCommandLineArgs();
+                foreach (string arg in args3)
+                {
+                    Console.WriteLine("starting level: {0}", levelEffect);
+                    //Console.WriteLine("jury 2 {1} and 3 {2}:", juryPoints[2], juryPoints[3]);
+                }
             }
 
             if (startingLevel > startingLevelInBeginning) // staring level compensator
@@ -379,9 +336,16 @@ namespace SkiJumpScoreBoard
                 // jos lähtee ylempää vähennetään pituusmetreinä 1m = 5m eli 5x lavanmuutos
                 // näin voi laittaa kertoimeksi -5, jolloin menee suoraan syötetyllä lavamuutoksella
                 var levelEffect = startingLevel * -5;
-                points += levelEffect;
+                points += (levelEffect*1.8);
 
+                string[] args3 = Environment.GetCommandLineArgs();
+                foreach (string arg in args3)
+                {
+                    Console.WriteLine("starting level: {0}", levelEffect);
+                    //Console.WriteLine("jury 2 {1} and 3 {2}:", juryPoints[2], juryPoints[3]);
+                }
             }
+            
 
             if (jumpLength2 > Convert.ToInt32(hillSizeTextBox.Text)) // hill size =textbox3
             {
@@ -394,7 +358,12 @@ namespace SkiJumpScoreBoard
                 points += 60 - ((hillSize-jumpLength2) * 1.8);
             }
             points += (sumAvg * (hillSize-36)/20); // K-point effects on "36" somehow // wind
-            
+            string[] args4 = Environment.GetCommandLineArgs();
+            foreach (string arg in args4)
+            {
+                Console.WriteLine(" wind points: {0}", ((sumAvg * (hillSize - 36) / 20)*1.8));
+                
+            }
             pointsTextBox.AppendText("" + points);
 
 
