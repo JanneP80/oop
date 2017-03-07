@@ -22,8 +22,6 @@ namespace SkiJumpScoreBoard
         public SkiJumpMainForm()
         {
             InitializeComponent();
-            
-            //List<SkiJumper> skiJumpers = new List<SkiJumper>();
             // List<float> juryPoints = new List<float>()
             object[] juryPoints =
             {
@@ -82,59 +80,12 @@ namespace SkiJumpScoreBoard
 
             competitorNameComboBox.DataSource = skiJumpers;
             competitorNameComboBox.DisplayMember = "competitorName";
-
-            // var currentJumper = comboBox1.SelectedIndex;
-
-            // if (jumpLenght < 0)
-            // {
-            //   textBox1.AppendText("Please insert jump length");
-            //}
-
+            
             jury1comboBox.Items.AddRange(juryPoints);
             jury2ComboBox.Items.AddRange(juryPoints);
             jury3comboBox.Items.AddRange(juryPoints);
             jury4comboBox.Items.AddRange(juryPoints);
             jury5comboBox.Items.AddRange(juryPoints);
-            /*
-            comboBox3.DataSource = juryPoints;
-            comboBox4.DataSource = juryPoints;
-            comboBox5.DataSource = juryPoints;
-            comboBox6.DataSource = juryPoints;
-            */
-            // var tempvar = Convert.ToInt32(textBox1.Text);
-            //skiJumpers[currentJumper].Points = Convert.ToInt32(textBox1.Text);
-            //skiJumpers[currentJumper].Points = textBox1.Text;
-            /*
-            if (skiJumpers[currentJumper].Points < 1)
-            {
-                textBox1.AppendText("Please insert number greater than one. ");
-                //textBox1.
-            } 
-            else if (skiJumpers[currentJumper].Points > 1)
-            {
-                //skiJumpers. textBox1.Text;
-            }*/
-            //int ii = int.Parse(textBox3.Text);
-            //skiJumpers[comboBox1.SelectedIndex].Points = ii;
-
-            // TODO!!! fix text box3 -> points
-            //if textBox3_TextChanged() == true
-            /*
-            int value;
-
-            if (int.TryParse(textBox2.Text, out value)) 
-            {
-                //parsing successful 
-                skiJumpers[comboBox1.SelectedIndex].Points = value;
-                listBox2.Refresh();
-            }
-            else
-            {
-                //parsing failed. 
-            }
-            */
-            //skiJumpers[comboBox1.SelectedIndex].Points = Convert.ToInt32(textBox2.Text);
-            //(int.TryParse(textBox2.Text));
         }
 
         private void SkiJumpMainForm_Load(object sender, EventArgs e)
@@ -150,7 +101,6 @@ namespace SkiJumpScoreBoard
             {
                 jumpLengthTextBox.Text = "";
             }
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -169,7 +119,6 @@ namespace SkiJumpScoreBoard
             }*/
 
             //var jumpLength = 123;
-
             
             //TODO!!! korjaa sopimaan omaan
             string[] tempArray = jumpLengthTextBox.Lines;
@@ -178,7 +127,6 @@ namespace SkiJumpScoreBoard
             for (int counter = 0; counter < tempArray.Length; counter++)
             {
                 System.Diagnostics.Debug.WriteLine(tempArray[counter]);
-
             }
             
             string[] args = Environment.GetCommandLineArgs();
@@ -189,7 +137,6 @@ namespace SkiJumpScoreBoard
             }
 
             List<float> WindList = new List<float>(); // windmeter list
-
             try
             {
                 string[] txtNumbers = WindMeterTextBox2.Text.Split('\n');
@@ -208,17 +155,14 @@ namespace SkiJumpScoreBoard
                 windSumAvg  += WindList[i];
             }
 
-            windSumAvg  = (windSumAvg  / 5);
-            //rounding
-            windSumAvg = windSumAvg * 2;
-            Math.Round(windSumAvg, MidpointRounding.AwayFromZero);
-            windSumAvg = windSumAvg / 2;
+            windSumAvg  = (windSumAvg  / 5); // noon-rounded
+            
 
             string[] args2 = Environment.GetCommandLineArgs();
             foreach (string arg in args2)
             {
                 //Console.WriteLine("wind {0}", WindList[2]);
-                Console.WriteLine("wind {0}", windSumAvg );
+                Console.WriteLine("non rounded wind {0}", windSumAvg );
             }
 
             
@@ -341,7 +285,7 @@ namespace SkiJumpScoreBoard
                 string[] args3 = Environment.GetCommandLineArgs();
                 foreach (string arg in args3)
                 {
-                    Console.WriteLine("starting level: {0}", levelEffect);
+                    Console.WriteLine("starting level: {0}", (levelEffect*1.8));
                     //Console.WriteLine("jury 2 {1} and 3 {2}:", juryPoints[2], juryPoints[3]);
                 }
             }
@@ -350,20 +294,41 @@ namespace SkiJumpScoreBoard
             if (jumpLength2 > Convert.ToInt32(hillSizeTextBox.Text)) // hill size =textbox3
             {
                 //points += 60;
+
+                /*
                 points += 60+ ((jumpLength2-hillSize) * 1.8); // jump over K
-                
+                                                              //
+                string[] args5 = Environment.GetCommandLineArgs();
+                foreach (string arg in args5)
+                {
+                    Console.WriteLine(" jump points: {0}", points);
+                }
+                */
+                //
+
             }
             else // how about under k-point
             {
                 points += 60 - ((hillSize-jumpLength2) * 1.8);
             }
-            points += (sumAvg * (hillSize-36)/20); // K-point effects on "36" somehow // wind
+
+            //rounding wind
+            var windSumAvg2 = (sumAvg * (hillSize - 36) / 20);
+            windSumAvg2 = windSumAvg2 * 2;
+            windSumAvg2 = Convert.ToSingle(Math.Round(windSumAvg2, MidpointRounding.AwayFromZero));
+            windSumAvg2 = windSumAvg2 / 2;
+            windSumAvg2 = Convert.ToSingle((windSumAvg2 * 1.8));
+
+            points += windSumAvg2; // K-point effects on "36" somehow // wind points
+
+            //
             string[] args4 = Environment.GetCommandLineArgs();
             foreach (string arg in args4)
             {
-                Console.WriteLine(" wind points: {0}", ((sumAvg * (hillSize - 36) / 20)*1.8));
+                Console.WriteLine(" wind points: {0}", windSumAvg2);
                 
             }
+            //
             pointsTextBox.AppendText("" + points);
 
 
@@ -419,13 +384,38 @@ namespace SkiJumpScoreBoard
             
             var value= float.Parse(pointsTextBox.Text);
 
-            skiJumpers[competitorNameComboBox.SelectedIndex].Points = value;
-            this.standingsListBox.DisplayMember = (skiJumpers[competitorNameComboBox.SelectedIndex].CompetitorName);
+            skiJumpers[competitorNameComboBox.SelectedIndex].Points = value; // Add points on competitor
 
-            // TODO!!! listbox2 näyttää tilanteen
-            //listBox2.Items.Insert(skiJumpers[comboBox1.SelectedIndex].Points);
-           // listBox2.DataSource = skiJumpers[comboBox1.SelectedIndex].Points;
-            standingsListBox.Refresh();
+            // this.standingsListBox.DisplayMember = (skiJumpers[competitorNameComboBox.SelectedIndex].CompetitorName);
+            /*
+            standingsListView.View = View.List;
+            Cursor[] favoriteCursors = new Cursor[]{Cursors.Help,
+            Cursors.Hand, Cursors.No, Cursors.Cross};
+
+            // Populate the ListView control with the array of Cursors.
+            foreach (Cursor aCursor in favoriteCursors)
+            {
+                // Construct the ListViewItem object
+                ListViewItem item = new ListViewItem();
+
+                // Set the Text property to the cursor name.
+                item.Text = aCursor.ToString();
+
+                // Set the Tag property to the cursor.
+                item.Tag = aCursor;
+
+                // Add the ListViewItem to the ListView.
+                standingsListView.Items.Add(item);
+            }
+        }*/
+
+        // TODO!!! listbox2 näyttää tilanteen
+        //listBox2.Items.Insert(skiJumpers[comboBox1.SelectedIndex].Points);
+        // listBox2.DataSource = skiJumpers[comboBox1.SelectedIndex].Points;
+        
+            //standingsListBox.Refresh();
+            
+            
             // textBox4.AppendText("{0}", skiJumpers[comboBox1.SelectedIndex].CompetitorName);
             /*
             if (int.TryParse(textBox2.Text)) // points
@@ -472,55 +462,11 @@ namespace SkiJumpScoreBoard
         {
 
         }
-        /*
-public class Int32TextBox : TextBox
-{
-protected override void OnKeyPress(KeyPressEventArgs e)
-{
-base.OnKeyPress(e);
 
-NumberFormatInfo fi = CultureInfo.CurrentCulture.NumberFormat;
+        private void standingsListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
-string c = e.KeyChar.ToString();
-if (char.IsDigit(c, 0))
-return;
-
-if ((SelectionStart == 0) && (c.Equals(fi.NegativeSign)))
-return;
-
-// copy/paste
-if ((((int)e.KeyChar == 22) || ((int)e.KeyChar == 3))
-&& ((ModifierKeys & Keys.Control) == Keys.Control))
-return;
-
-if (e.KeyChar == '\b')
-return;
-
-e.Handled = true;
-}
-}
-
-protected override void WndProc(ref System.Windows.Forms.Message m)
-{
-const int WM_PASTE = 0x0302;
-if (m.Msg == WM_PASTE)
-{
-string text = Clipboard.GetText();
-if (string.IsNullOrEmpty(text))
-return;
-
-if ((text.IndexOf('+') >= 0) && (SelectionStart != 0))
-return;
-
-int i;
-if (!int.TryParse(text, out i)) // change this for other integer types
-return;
-
-if ((i < 0) && (SelectionStart != 0))
-return;
-}
-base.WndProc(ref m);
-}*/
+        }
     }
 
 }
