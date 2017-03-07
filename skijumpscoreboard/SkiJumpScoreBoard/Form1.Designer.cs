@@ -31,6 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.jumpLengthTextBox = new System.Windows.Forms.TextBox();
             this.windMeterListBox = new System.Windows.Forms.ListBox();
+            competitorNameComboBox = new System.Windows.Forms.ComboBox();
+            SkiJumpMainForm.jury1comboBox = new System.Windows.Forms.ComboBox();
+            SkiJumpMainForm.jury2ComboBox = new System.Windows.Forms.ComboBox();
+            SkiJumpMainForm.jury3comboBox = new System.Windows.Forms.ComboBox();
+            SkiJumpMainForm.jury4comboBox = new System.Windows.Forms.ComboBox();
+            SkiJumpMainForm.jury5comboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,19 +45,23 @@
             this.button1calculate = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            SkiJumpMainForm.pointsTextBox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
+            SkiJumpMainForm.hillSizeTextBox = new System.Windows.Forms.TextBox();
             this.button2next = new System.Windows.Forms.Button();
             this.standingsListBox = new System.Windows.Forms.ListBox();
             this.skiJumperBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            SkiJumpMainForm.WindMeterTextBox2 = new System.Windows.Forms.TextBox();
             this.textBox4temp = new System.Windows.Forms.TextBox();
             this.skiJumperBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            SkiJumpMainForm.startGateComboBox = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -92,6 +102,60 @@
             this.windMeterListBox.TabIndex = 8;
             this.windMeterListBox.ValueMember = "int wind";
             this.windMeterListBox.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // competitorNameComboBox
+            // 
+            SkiJumpMainForm.competitorNameComboBox.FormattingEnabled = true;
+            SkiJumpMainForm.competitorNameComboBox.Location = new System.Drawing.Point(60, 218);
+            SkiJumpMainForm.competitorNameComboBox.Name = "competitorNameComboBox";
+            SkiJumpMainForm.competitorNameComboBox.Size = new System.Drawing.Size(145, 24);
+            SkiJumpMainForm.competitorNameComboBox.TabIndex = 1;
+            // 
+            // jury1comboBox
+            // 
+            SkiJumpMainForm.jury1comboBox.FormatString = "N1";
+            SkiJumpMainForm.jury1comboBox.FormattingEnabled = true;
+            SkiJumpMainForm.jury1comboBox.Location = new System.Drawing.Point(452, 216);
+            SkiJumpMainForm.jury1comboBox.Name = "jury1comboBox";
+            SkiJumpMainForm.jury1comboBox.Size = new System.Drawing.Size(75, 24);
+            SkiJumpMainForm.jury1comboBox.TabIndex = 3;
+            SkiJumpMainForm.jury1comboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
+            // jury2ComboBox
+            // 
+            SkiJumpMainForm.jury2ComboBox.FormatString = "N1";
+            SkiJumpMainForm.jury2ComboBox.FormattingEnabled = true;
+            SkiJumpMainForm.jury2ComboBox.Location = new System.Drawing.Point(452, 246);
+            SkiJumpMainForm.jury2ComboBox.Name = "jury2ComboBox";
+            SkiJumpMainForm.jury2ComboBox.Size = new System.Drawing.Size(75, 24);
+            SkiJumpMainForm.jury2ComboBox.TabIndex = 4;
+            // 
+            // jury3comboBox
+            // 
+            SkiJumpMainForm.jury3comboBox.FormatString = "N1";
+            SkiJumpMainForm.jury3comboBox.FormattingEnabled = true;
+            SkiJumpMainForm.jury3comboBox.Location = new System.Drawing.Point(452, 276);
+            SkiJumpMainForm.jury3comboBox.Name = "jury3comboBox";
+            SkiJumpMainForm.jury3comboBox.Size = new System.Drawing.Size(75, 24);
+            SkiJumpMainForm.jury3comboBox.TabIndex = 5;
+            // 
+            // jury4comboBox
+            // 
+            SkiJumpMainForm.jury4comboBox.FormatString = "N1";
+            SkiJumpMainForm.jury4comboBox.FormattingEnabled = true;
+            SkiJumpMainForm.jury4comboBox.Location = new System.Drawing.Point(452, 306);
+            SkiJumpMainForm.jury4comboBox.Name = "jury4comboBox";
+            SkiJumpMainForm.jury4comboBox.Size = new System.Drawing.Size(75, 24);
+            SkiJumpMainForm.jury4comboBox.TabIndex = 6;
+            // 
+            // jury5comboBox
+            // 
+            SkiJumpMainForm.jury5comboBox.FormatString = "N1";
+            SkiJumpMainForm.jury5comboBox.FormattingEnabled = true;
+            SkiJumpMainForm.jury5comboBox.Location = new System.Drawing.Point(452, 336);
+            SkiJumpMainForm.jury5comboBox.Name = "jury5comboBox";
+            SkiJumpMainForm.jury5comboBox.Size = new System.Drawing.Size(75, 24);
+            SkiJumpMainForm.jury5comboBox.TabIndex = 7;
             // 
             // label1
             // 
@@ -167,6 +231,15 @@
             this.label7.TabIndex = 15;
             this.label7.Text = "points";
             // 
+            // pointsTextBox
+            // 
+            SkiJumpMainForm.pointsTextBox.Enabled = false;
+            SkiJumpMainForm.pointsTextBox.Location = new System.Drawing.Point(273, 363);
+            SkiJumpMainForm.pointsTextBox.Name = "pointsTextBox";
+            SkiJumpMainForm.pointsTextBox.Size = new System.Drawing.Size(100, 22);
+            SkiJumpMainForm.pointsTextBox.TabIndex = 16;
+            SkiJumpMainForm.pointsTextBox.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.ImageLocation = "D:\\ekoodi17k\\dev\\oop\\skijumpscoreboard\\SkiJumpScoreBoard\\flags\\at.png";
@@ -227,6 +300,16 @@
             this.label8.TabIndex = 23;
             this.label8.Text = "Input Hill Size (K-point)";
             // 
+            // hillSizeTextBox
+            // 
+            SkiJumpMainForm.hillSizeTextBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "JumpLength"});
+            SkiJumpMainForm.hillSizeTextBox.Location = new System.Drawing.Point(60, 103);
+            SkiJumpMainForm.hillSizeTextBox.Name = "hillSizeTextBox";
+            SkiJumpMainForm.hillSizeTextBox.Size = new System.Drawing.Size(145, 22);
+            SkiJumpMainForm.hillSizeTextBox.TabIndex = 0;
+            SkiJumpMainForm.hillSizeTextBox.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
             // button2next
             // 
             this.button2next.Location = new System.Drawing.Point(521, 397);
@@ -256,7 +339,6 @@
             // skiJumperBindingSource
             // 
             this.skiJumperBindingSource.DataSource = typeof(SkiJumpScoreBoard.SkiJumper);
-            this.skiJumperBindingSource.CurrentChanged += new System.EventHandler(this.skiJumperBindingSource_CurrentChanged);
             // 
             // label9
             // 
@@ -269,6 +351,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(SkiJumpMainForm.WindMeterTextBox2);
             this.groupBox1.Controls.Add(this.textBox4temp);
             this.groupBox1.Controls.Add(this.windMeterListBox);
             this.groupBox1.Location = new System.Drawing.Point(12, 141);
@@ -277,6 +360,22 @@
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Round 1";
+            // 
+            // WindMeterTextBox2
+            // 
+            SkiJumpMainForm.WindMeterTextBox2.AutoCompleteCustomSource.AddRange(new string[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            SkiJumpMainForm.WindMeterTextBox2.Location = new System.Drawing.Point(676, 75);
+            SkiJumpMainForm.WindMeterTextBox2.Multiline = true;
+            SkiJumpMainForm.WindMeterTextBox2.Name = "WindMeterTextBox2";
+            SkiJumpMainForm.WindMeterTextBox2.Size = new System.Drawing.Size(62, 88);
+            SkiJumpMainForm.WindMeterTextBox2.TabIndex = 1;
+            SkiJumpMainForm.WindMeterTextBox2.Tag = "windsummum";
+            SkiJumpMainForm.WindMeterTextBox2.Text = "1\r\n2\r\n3\r\n4\r\n5";
             // 
             // textBox4temp
             // 
@@ -289,6 +388,16 @@
             // skiJumperBindingSource1
             // 
             this.skiJumperBindingSource1.DataSource = typeof(SkiJumpScoreBoard.SkiJumper);
+            // 
+            // startGateComboBox
+            // 
+            SkiJumpMainForm.startGateComboBox.FormattingEnabled = true;
+            SkiJumpMainForm.startGateComboBox.Location = new System.Drawing.Point(452, 99);
+            SkiJumpMainForm.startGateComboBox.Name = "startGateComboBox";
+            SkiJumpMainForm.startGateComboBox.Size = new System.Drawing.Size(121, 24);
+            SkiJumpMainForm.startGateComboBox.TabIndex = 28;
+            SkiJumpMainForm.startGateComboBox.Text = "0";
+            SkiJumpMainForm.startGateComboBox.SelectedIndexChanged += new System.EventHandler(SkiJumpMainForm.startGateComboBox_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -305,15 +414,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(844, 493);
             this.Controls.Add(this.label10);
+            this.Controls.Add(SkiJumpMainForm.startGateComboBox);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.standingsListBox);
             this.Controls.Add(this.button2next);
+            this.Controls.Add(SkiJumpMainForm.hillSizeTextBox);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(SkiJumpMainForm.pointsTextBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button1calculate);
@@ -322,6 +434,12 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(SkiJumpMainForm.jury5comboBox);
+            this.Controls.Add(SkiJumpMainForm.jury4comboBox);
+            this.Controls.Add(SkiJumpMainForm.jury3comboBox);
+            this.Controls.Add(SkiJumpMainForm.jury2ComboBox);
+            this.Controls.Add(SkiJumpMainForm.jury1comboBox);
+            this.Controls.Add(SkiJumpMainForm.competitorNameComboBox);
             this.Controls.Add(this.jumpLengthTextBox);
             this.Controls.Add(this.groupBox1);
             this.Name = "SkiJumpMainForm";

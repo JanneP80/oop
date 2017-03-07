@@ -211,11 +211,6 @@ namespace SkiJumpScoreBoard
         {
 
         }
-
-        private void skiJumperBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 
 }
