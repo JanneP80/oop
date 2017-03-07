@@ -80,7 +80,7 @@ namespace SkiJumpScoreBoard
 
             competitorNameComboBox.DataSource = skiJumpers;
             competitorNameComboBox.DisplayMember = "competitorName";
-            
+
             jury1comboBox.Items.AddRange(juryPoints);
             jury2ComboBox.Items.AddRange(juryPoints);
             jury3comboBox.Items.AddRange(juryPoints);
@@ -119,7 +119,7 @@ namespace SkiJumpScoreBoard
             }*/
 
             //var jumpLength = 123;
-            
+
             //TODO!!! korjaa sopimaan omaan
             string[] tempArray = jumpLengthTextBox.Lines;
 
@@ -128,7 +128,7 @@ namespace SkiJumpScoreBoard
             {
                 System.Diagnostics.Debug.WriteLine(tempArray[counter]);
             }
-            
+
             string[] args = Environment.GetCommandLineArgs();
             foreach (string arg in args)
             {
@@ -149,22 +149,23 @@ namespace SkiJumpScoreBoard
             catch (Exception exce)
             {
             }
-            float windSumAvg =0;
-            for (int i=0; i < 5; i++)
+            float windSumAverage = WindList.Sum();
+
+            float windSumAvg = 0;
+            for (int i = 0; i <= 4; i++)
             {
-                windSumAvg  += WindList[i];
+                windSumAvg += WindList[i];
             }
 
-            windSumAvg  = (windSumAvg  / 5); // noon-rounded
-            
+            windSumAvg = (windSumAvg / 5); // non-rounded
+
 
             string[] args2 = Environment.GetCommandLineArgs();
             foreach (string arg in args2)
             {
                 //Console.WriteLine("wind {0}", WindList[2]);
-                Console.WriteLine("non rounded wind {0}", windSumAvg );
+                Console.WriteLine("non rounded wind {0}, helpompi: {1}", windSumAvg, windSumAverage);
             }
-
             
             List<float> juryPoints = new List<float>(); // jury points list x5 for each jury member
 
@@ -228,13 +229,13 @@ namespace SkiJumpScoreBoard
             catch (Exception exce)
             {
             }
-            
+
             //  Array ja for Array max ja array min vähenentään jurypointsista
             // Array ja sort ja ottaa kolme keskimmäistä // toimii
-            
+
             var currentJumper = competitorNameComboBox.SelectedIndex;
 
-            calculatePoints(currentJumper, jumpLength3, windSumAvg , juryPoints);
+            calculatePoints(currentJumper, jumpLength3, windSumAvg, juryPoints);
         }
 
         private void calculatePoints(object p, Int32 jumpLength2, float sumAvg, List<float> juryPoints)
@@ -247,19 +248,19 @@ namespace SkiJumpScoreBoard
 
             juryPoints.Sort((x, y) => x.CompareTo(y));
             var jurypoints = juryPoints[1] + juryPoints[2] + juryPoints[3];
-            
+
             string[] args2 = Environment.GetCommandLineArgs();
 
             foreach (string arg in args2)
             {
-               // Console.WriteLine("wind {0}", WindList[2]);
+                // Console.WriteLine("wind {0}", WindList[2]);
                 Console.WriteLine("jury points, {0}", jurypoints);
                 // do stuff
             }
-            
-            var points = 0 + (double) + jurypoints;
+
+            var points = 0 + (double)+jurypoints;
             var hillSize = Convert.ToInt32(hillSizeTextBox.Text);
-            
+
             if (startingLevel < startingLevelInBeginning) // staring level compensator
             {
                 // jos lähtee ylempää vähennetään pituusmetreinä 1m = 5m eli 5x lavanmuutos
@@ -280,22 +281,21 @@ namespace SkiJumpScoreBoard
                 // jos lähtee ylempää vähennetään pituusmetreinä 1m = 5m eli 5x lavanmuutos
                 // näin voi laittaa kertoimeksi -5, jolloin menee suoraan syötetyllä lavamuutoksella
                 var levelEffect = startingLevel * -5;
-                points += (levelEffect*1.8);
+                points += (levelEffect * 1.8);
 
                 string[] args3 = Environment.GetCommandLineArgs();
                 foreach (string arg in args3)
                 {
-                    Console.WriteLine("starting level: {0}", (levelEffect*1.8));
+                    Console.WriteLine("starting level: {0}", (levelEffect * 1.8));
                     //Console.WriteLine("jury 2 {1} and 3 {2}:", juryPoints[2], juryPoints[3]);
                 }
             }
-            
+
 
             if (jumpLength2 > Convert.ToInt32(hillSizeTextBox.Text)) // hill size =textbox3
             {
                 //points += 60;
-
-                /*
+                
                 points += 60+ ((jumpLength2-hillSize) * 1.8); // jump over K
                                                               //
                 string[] args5 = Environment.GetCommandLineArgs();
@@ -303,13 +303,13 @@ namespace SkiJumpScoreBoard
                 {
                     Console.WriteLine(" jump points: {0}", points);
                 }
-                */
+                
                 //
 
             }
             else // how about under k-point
             {
-                points += 60 - ((hillSize-jumpLength2) * 1.8);
+                points += 60 - ((hillSize - jumpLength2) * 1.8);
             }
 
             //rounding wind
@@ -326,7 +326,7 @@ namespace SkiJumpScoreBoard
             foreach (string arg in args4)
             {
                 Console.WriteLine(" wind points: {0}", windSumAvg2);
-                
+
             }
             //
             pointsTextBox.AppendText("" + points);
@@ -360,7 +360,7 @@ namespace SkiJumpScoreBoard
             {
                 hillSizeTextBox.Text = "";
             }
-            
+
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -375,14 +375,14 @@ namespace SkiJumpScoreBoard
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             // sending information forward
-            
-            var value= float.Parse(pointsTextBox.Text);
+
+            var value = float.Parse(pointsTextBox.Text);
 
             skiJumpers[competitorNameComboBox.SelectedIndex].Points = value; // Add points on competitor
 
@@ -409,13 +409,13 @@ namespace SkiJumpScoreBoard
             }
         }*/
 
-        // TODO!!! listbox2 näyttää tilanteen
-        //listBox2.Items.Insert(skiJumpers[comboBox1.SelectedIndex].Points);
-        // listBox2.DataSource = skiJumpers[comboBox1.SelectedIndex].Points;
-        
+            // TODO!!! listbox2 näyttää tilanteen
+            //listBox2.Items.Insert(skiJumpers[comboBox1.SelectedIndex].Points);
+            // listBox2.DataSource = skiJumpers[comboBox1.SelectedIndex].Points;
+
             //standingsListBox.Refresh();
-            
-            
+
+
             // textBox4.AppendText("{0}", skiJumpers[comboBox1.SelectedIndex].CompetitorName);
             /*
             if (int.TryParse(textBox2.Text)) // points

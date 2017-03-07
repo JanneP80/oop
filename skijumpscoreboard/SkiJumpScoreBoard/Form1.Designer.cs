@@ -63,7 +63,6 @@
             this.skiJumperBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.startGateComboBox = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.standingsListView = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -352,7 +351,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.standingsListView);
             this.groupBox1.Controls.Add(this.WindMeterTextBox2);
             this.groupBox1.Controls.Add(this.textBox4temp);
             this.groupBox1.Controls.Add(this.windMeterListBox);
@@ -409,15 +407,6 @@
             this.label10.Size = new System.Drawing.Size(353, 17);
             this.label10.TabIndex = 29;
             this.label10.Text = "StartGate Level Change compared to Competition start";
-            // 
-            // standingsListView
-            // 
-            this.standingsListView.Location = new System.Drawing.Point(657, 178);
-            this.standingsListView.Name = "standingsListView";
-            this.standingsListView.Size = new System.Drawing.Size(133, 133);
-            this.standingsListView.TabIndex = 9;
-            this.standingsListView.UseCompatibleStateImageBehavior = false;
-            this.standingsListView.SelectedIndexChanged += new System.EventHandler(this.standingsListView_SelectedIndexChanged);
             // 
             // SkiJumpMainForm
             // 
@@ -505,7 +494,6 @@
         private System.Windows.Forms.BindingSource skiJumperBindingSource1;
         private System.Windows.Forms.ComboBox startGateComboBox;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ListView standingsListView;
     }
 }
 
