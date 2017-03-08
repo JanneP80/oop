@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace SkiJumpPointsCalculator
 {
@@ -15,11 +16,13 @@ namespace SkiJumpPointsCalculator
         public static float StartingLevelInBeginning = 0;
         List<SkiJumper> skiJumpers = new List<SkiJumper>();
         //List<CurrentStandings> standings = new List<CurrentStandings>(); // somewhere 
+        List<int> hasJumped = new List<int>();
+        List<SkiJumper> roundOneResults = new List<SkiJumper>();
 
         public SkiJumpMainForm()
         {
             InitializeComponent();
-                                 // jumping order, name, points
+            // jumping order, name, points
             skiJumpers.Add(new SkiJumper(1, "Adam Malycz", 0));
             skiJumpers.Add(new SkiJumper(2, "Martin Schmitdt", 0));
             skiJumpers.Add(new SkiJumper(3, "Jari Puikkonen", 0));
@@ -34,7 +37,7 @@ namespace SkiJumpPointsCalculator
         {
             hillSizeTextBox.Focus();// hill size
         }
-        
+
         private void nextCompetitorButton_Click(object sender, EventArgs e)
         {
             decimal parsevalue;
@@ -43,7 +46,7 @@ namespace SkiJumpPointsCalculator
                 pointsTextBox.Text = "0"; // Also fucntions as: competitor is not jumping and gets 0 points here
             }
             var points = decimal.Parse(pointsTextBox.Text);
-            
+
             string[] args = Environment.GetCommandLineArgs(); // show in console points is set ok
             foreach (string arg in args)
             {
@@ -53,20 +56,22 @@ namespace SkiJumpPointsCalculator
                 Console.WriteLine();
             }
             currentStandingsListView.Text = null;
-            
+
             skiJumpers = skiJumpers.OrderByDescending(x => x.Points).ToList();
             int p = 1;
 
             foreach (var skijumper in skiJumpers)
             {
-                currentStandingsListView.Text += p + ". " + skijumper.CompetitorName  + "\t" + skijumper.Points + " Points\n";
+                currentStandingsListView.Text += p + ". " + skijumper.CompetitorName + "\t" + skijumper.Points + " Points\n";
                 p++;
             }
+
+            hasJumped.Add(skiJumpers[competitorNameComboBox.SelectedIndex].Id);
 
             //clearing for next jump
             jumpLengthTextBox.Text = "";
             pointsTextBox.Text = "";
-            jury1PointsComboBox.Text = null; 
+            jury1PointsComboBox.Text = null;
             jury2PointsComboBox.Text = null;
             jury3PointsComboBox.Text = null;
             jury4PointsComboBox.Text = null;
@@ -75,8 +80,22 @@ namespace SkiJumpPointsCalculator
             competitorNameComboBox.Focus(); // ready for next jumper
                                             // if all jumpers have jumped, then next round
                                             // ---> 
-            // roundGroupBox.Text = "Round 2";
+                                            // roundGroupBox.Text = "Round 2";
+            if (hasJumped.Count == skiJumpers.Count)
+            {
+                if (roundGroupBox.Text == "Round 2") // end of competition
+                {
+                    // skiJumpers=roundOneResults + skiJumpers;
 
+                }
+                // new round happens
+                roundGroupBox.Text = "Round 2";
+                // turn jumping order
+                hasJumped.Clear();
+                
+                roundOneResults = skiJumpers;
+                // clear standings
+            }
         }
 
         private void calculatePointsButton_Click(object sender, EventArgs e)
@@ -95,6 +114,16 @@ namespace SkiJumpPointsCalculator
             decimal jumpTotalPoints = 0;
             // var currentJumper = competitorNameComboBox.SelectedIndex;
             //var currentJumper = SkiJumpMainForm.competitorNameComboBox.SelectedIndex;
+            
+            //foreach (int r in hasJumped.Intersect)
+                for (int i = 0; i < hasJumped.Count; i++)
+                {
+                    if (skiJumpers[competitorNameComboBox.SelectedIndex].Id == hasJumped[i])
+                    {
+                        errorMessage.Visible = true;
+                        goto nahno;
+                    }
+                }
 
             juryPoints = PointsCalculator.CalcJuryPoints(jury1PointsComboBox.Value, jury2PointsComboBox.Value, jury3PointsComboBox.Value,
                jury4PointsComboBox.Value, jury5PointsComboBox.Value);
@@ -102,11 +131,19 @@ namespace SkiJumpPointsCalculator
             gatePoints = PointsCalculator.CalcStartGatePoints(startGateComboBox.Text);
             windPoints = PointsCalculator.CalcWindPoints(windMeter1.Value, windMeter2.Value, windMeter3.Value, windMeter4.Value, windMeter5.Value, hillSizeTextBox.Text);
             jumpTotalPoints = juryPoints + lengthPoints + gatePoints + windPoints;
-            
+
             pointsTextBox.AppendText("" + jumpTotalPoints);
+            if (roundGroupBox.Text == "Round 2") // second round of competition
+            {
+                // skiJumpers=roundOneResults + skiJumpers;
+                jumpTotalPoints = jumpTotalPoints + skiJumpers[competitorNameComboBox.SelectedIndex].Points;
+            }
             skiJumpers[competitorNameComboBox.SelectedIndex].Points = jumpTotalPoints; // Add points on competitor
+            
+            nahno:
+            ;
         }
-        
+
         private void jumpLengthTextBox_TextChanged(object sender, EventArgs e)
         {
             decimal parsedValue;
@@ -116,10 +153,10 @@ namespace SkiJumpPointsCalculator
                 jumpLengthTextBox.Text = "";
             }
         }
-        
+
         private void competitorNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            errorMessage.Visible = false;
         }
 
         private void hillSizeTextBox_TextChanged(object sender, EventArgs e)
@@ -131,7 +168,7 @@ namespace SkiJumpPointsCalculator
                 hillSizeTextBox.Text = "";
             }
         }
-        
+
         private void roundGroupBox_Enter(object sender, EventArgs e)
         {
 
