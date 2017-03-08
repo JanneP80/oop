@@ -9,7 +9,7 @@ namespace SkiJumpPointsCalculator
     {
         public static void gatherAllDataFromFields()
         {
-            var jumpLength3 = (Convert.ToInt32(SkiJumpMainForm.jumpLengthTextBox.Text));
+            //var jumpLength3 = (Convert.ToInt32(SkiJumpMainForm.jumpLengthTextBox.Text));
             //TODO!!! tyhjä klikkaus pois
             /* if (jumpLengthTextBox.Text != null)
             {
@@ -25,7 +25,7 @@ namespace SkiJumpPointsCalculator
                 Console.WriteLine("Checking calculations: ");
             }
 
-
+            /*
             List<float> windList = new List<float>(); // windmeter list
             try
             {
@@ -52,6 +52,7 @@ namespace SkiJumpPointsCalculator
                 windSumAvg += windList[i];
             }
             */
+            /*
             windSumAvg = (windSumAvg / 5); // non-rounded
 
             string[] args2 = Environment.GetCommandLineArgs();
@@ -59,7 +60,8 @@ namespace SkiJumpPointsCalculator
             {
                 Console.WriteLine("non rounded wind {0}, ", windSumAvg);
             }
-
+            /*
+            /*
             List<float> juryPoints = new List<float>(); // jury points list x5 for each jury member
 
             try
@@ -147,89 +149,99 @@ namespace SkiJumpPointsCalculator
                     Console.WriteLine("insert number: {0}", exce);
                 }
             }
-
+            */
             //  Array ja for Array max ja array min vähenentään jurypointsista
             // Array ja sort ja ottaa kolme keskimmäistä // toimii
 
-            var currentJumper = SkiJumpMainForm.competitorNameComboBox.SelectedIndex;
+           // var currentJumper = SkiJumpMainForm.competitorNameComboBox.SelectedIndex;
 
-            calculatePoints(currentJumper, jumpLength3, windSumAvg, juryPoints);
+            //calculatePoints(currentJumper, jumpLength3, windSumAvg, juryPoints);
         }
 
-        internal static float CalcWindPoints(string text)
+        internal static decimal CalcWindPoints(string text, string text2)
         {
-            throw new NotImplementedException();
-        }
+            var hillSize = Convert.ToDecimal(text2);
 
-        internal static float CalcStartGatePoints(string text)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal static float CalcLengthPoints(string hillSizeTextBox, string jumpLengthTextBox)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal static float CalcJuryPoints(string text1, string text2, string text3, string text4, string text5)
-        {
-            throw new NotImplementedException();
-        }
-
-
-
-        public static void calculatePoints(object p, Int32 jumpLength2, float sumAvg, List<float> juryPoints)
-        {
-            // calculate jump length +judges +wind + gate = sum
-            // skiJumpers[currentJumper].Points =
-            var startingLevel = float.Parse(SkiJumpMainForm.startGateComboBox.Text);
-            // Tuulen voimakkuuden keskiarvo x (K - piste - 36) / 20
-            // var _jurypoints;
-
-            juryPoints.Sort((x, y) => x.CompareTo(y));
-            var jurypoints = juryPoints[1] + juryPoints[2] + juryPoints[3];
+            List<decimal> windList = new List<decimal>(); // windmeter list
+            try
+            {
+                string[] txtNumbers = text.Split('\n');
+                foreach (string nbr in txtNumbers)
+                {
+                    decimal number = decimal.Parse(nbr);
+                    windList.Add(number);
+                }
+            }
+            catch (Exception exce)
+            {
+                string[] args3 = Environment.GetCommandLineArgs();
+                foreach (string arg in args3)
+                {
+                    Console.WriteLine("insert number: {0}", exce);
+                }
+            }
+            decimal windSumAvg = windList.Sum();
+            /*
+            float windSumAvg = 0;
+            for (int i = 0; i <= 4; i++)
+            {
+                windSumAvg += windList[i];
+            }
+            */
+            windSumAvg = (windSumAvg / 5); // non-rounded
 
             string[] args2 = Environment.GetCommandLineArgs();
-
             foreach (string arg in args2)
             {
-                Console.WriteLine("jury points, {0}", jurypoints);
+                Console.WriteLine("non rounded wind {0}, ", windSumAvg);
+            }
+            //rounding wind
+            var windSumAvg2 = (windSumAvg * (hillSize - 36) / 20);
+            windSumAvg2 = windSumAvg2 * 2;
+            windSumAvg2 = (decimal) Convert.ToSingle(Math.Round(windSumAvg2, MidpointRounding.AwayFromZero));
+            windSumAvg2 = windSumAvg2 / 2;
+            windSumAvg2 = (decimal) Convert.ToSingle((windSumAvg2 * (decimal) 1.8));
+
+            // K-point effects on "36" somehow // wind points
+            string[] args4 = Environment.GetCommandLineArgs();
+            foreach (string arg in args4)
+            {
+                Console.WriteLine(" wind points: {0}", windSumAvg2);
+            }
+            return windSumAvg2;
+        }
+
+        internal static decimal CalcStartGatePoints(string text)
+        {
+            var startingLevel = decimal.Parse(text);
+            decimal levelEffect = 0;
+            var points = 0 + (decimal) +levelEffect;
+
+            // jos lähtee ylempää vähennetään pituusmetreinä 1m = 5m eli 5x lavanmuutos
+            // näin voi laittaa kertoimeksi -5, jolloin menee suoraan syötetyllä lavamuutoksella
+
+            levelEffect = startingLevel * -5;
+            points += (levelEffect * (decimal) 1.8);
+
+            string[] args3 = Environment.GetCommandLineArgs();
+            foreach (string arg in args3)
+            {
+                Console.WriteLine("starting level: {0}", (levelEffect * (decimal)1.8));
             }
 
-            var points = 0 + (double)+jurypoints;
-            var hillSize = Convert.ToInt32(SkiJumpMainForm.hillSizeTextBox.Text);
+            return points;
+        }
 
-            if (startingLevel < SkiJumpMainForm.startingLevelInBeginning) // staring level compensator
+        internal static decimal CalcLengthPoints(string hillSizeTextBox, string jumpLengthTextBox)
+        {
+            var hillSize = Convert.ToDecimal(hillSizeTextBox);
+            var jumpLength2 = Convert.ToDecimal(jumpLengthTextBox);
+
+            decimal points = 0;
+
+            if (jumpLength2 > hillSize) // hill size =textbox3
             {
-                // jos lähtee ylempää vähennetään pituusmetreinä 1m = 5m eli 5x lavanmuutos
-                // näin voi laittaa kertoimeksi -5, jolloin menee suoraan syötetyllä lavamuutoksella
-                var levelEffect = startingLevel * -5;
-                points += levelEffect;
-
-                string[] args3 = Environment.GetCommandLineArgs();
-                foreach (string arg in args3)
-                {
-                    Console.WriteLine("starting level: {0}", levelEffect);
-                }
-            }
-
-            if (startingLevel > SkiJumpMainForm.startingLevelInBeginning) // staring level compensator
-            {
-                // jos lähtee ylempää vähennetään pituusmetreinä 1m = 5m eli 5x lavanmuutos
-                // näin voi laittaa kertoimeksi -5, jolloin menee suoraan syötetyllä lavamuutoksella
-                var levelEffect = startingLevel * -5;
-                points += (levelEffect * 1.8);
-
-                string[] args3 = Environment.GetCommandLineArgs();
-                foreach (string arg in args3)
-                {
-                    Console.WriteLine("starting level: {0}", (levelEffect * 1.8));
-                }
-            }
-
-            if (jumpLength2 > Convert.ToInt32(SkiJumpMainForm.hillSizeTextBox.Text)) // hill size =textbox3
-            {
-                points += 60 + ((jumpLength2 - hillSize) * 1.8); // jump over K
+                points += 60 + ((jumpLength2 - hillSize) * (decimal) 1.8); // jump over K
                                                                  //
                 string[] args5 = Environment.GetCommandLineArgs();
                 foreach (string arg in args5)
@@ -241,26 +253,115 @@ namespace SkiJumpPointsCalculator
             }
             else // how about under k-point
             {
-                points += 60 - ((hillSize - jumpLength2) * 1.8);
+                points += 60 - ((hillSize - jumpLength2) * (decimal) 1.8);
             }
+            return points;
+        }
 
-            //rounding wind
-            var windSumAvg2 = (sumAvg * (hillSize - 36) / 20);
-            windSumAvg2 = windSumAvg2 * 2;
-            windSumAvg2 = Convert.ToSingle(Math.Round(windSumAvg2, MidpointRounding.AwayFromZero));
-            windSumAvg2 = windSumAvg2 / 2;
-            windSumAvg2 = Convert.ToSingle((windSumAvg2 * 1.8));
+        internal static decimal CalcJuryPoints(string text1, string text2, string text3, string text4, string text5)
+        {
+            List<decimal> juryPoints = new List<decimal>(); // jury points list x5 for each jury member
 
-            points += windSumAvg2; // K-point effects on "36" somehow // wind points
-
-            //
-            string[] args4 = Environment.GetCommandLineArgs();
-            foreach (string arg in args4)
+            try
             {
-                Console.WriteLine(" wind points: {0}", windSumAvg2);
+                string[] txtNumbers = text1.Split('\n');
+                foreach (string nbr in txtNumbers)
+                {
+                    decimal number = decimal.Parse(nbr);
+                    juryPoints.Add(number);
+                }
             }
-            //
-            SkiJumpMainForm.pointsTextBox.AppendText("" + points);
+            catch (Exception exce)
+            {
+                string[] args3 = Environment.GetCommandLineArgs();
+                foreach (string arg in args3)
+                {
+                    Console.WriteLine("insert number: {0}", exce);
+                }
+            }
+            try
+            {
+                string[] txtNumbers = text2.Split('\n'); // Cap C
+                foreach (string nbr in txtNumbers)
+                {
+                    decimal number = decimal.Parse(nbr);
+                    juryPoints.Add(number);
+                }
+            }
+            catch (Exception exce)
+            {
+                string[] args3 = Environment.GetCommandLineArgs();
+                foreach (string arg in args3)
+                {
+                    Console.WriteLine("insert number: {0}", exce);
+                }
+            }
+            try
+            {
+                string[] txtNumbers = text3.Split('\n');
+                foreach (string nbr in txtNumbers)
+                {
+                    decimal number = decimal.Parse(nbr);
+                    juryPoints.Add(number);
+                }
+            }
+            catch (Exception exce)
+            {
+                string[] args3 = Environment.GetCommandLineArgs();
+                foreach (string arg in args3)
+                {
+                    Console.WriteLine("insert number: {0}", exce);
+                }
+            }
+            try
+            {
+                string[] txtNumbers = text4.Split('\n');
+                foreach (string nbr in txtNumbers)
+                {
+                    decimal number = decimal.Parse(nbr);
+                    juryPoints.Add(number);
+                }
+            }
+            catch (Exception exce)
+            {
+                string[] args3 = Environment.GetCommandLineArgs();
+                foreach (string arg in args3)
+                {
+                    Console.WriteLine("insert number: {0}", exce);
+                }
+            }
+            try
+            {
+                string[] txtNumbers = text5.Split('\n');
+                foreach (string nbr in txtNumbers)
+                {
+                    decimal number = decimal.Parse(nbr);
+                    juryPoints.Add(number);
+                }
+            }
+            catch (Exception exce)
+            {
+                string[] args3 = Environment.GetCommandLineArgs();
+                foreach (string arg in args3)
+                {
+                    Console.WriteLine("insert number: {0}", exce);
+                }
+            }
+            juryPoints.Sort((x, y) => x.CompareTo(y));
+            var jurypoints = juryPoints[1] + juryPoints[2] + juryPoints[3];
+
+            string[] args2 = Environment.GetCommandLineArgs();
+
+            foreach (string arg in args2)
+            {
+                Console.WriteLine("jury points, {0}", jurypoints);
+            }
+            return jurypoints;
+        }
+        
+        public static void calculatePoints(object p, Int32 jumpLength2, float sumAvg, List<float> juryPoints)
+        {
+            
         }
     }
 }

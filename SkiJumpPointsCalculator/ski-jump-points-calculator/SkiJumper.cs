@@ -4,10 +4,10 @@
     {
         private int _id;
         private string _competitorName;
-        private float _points;
+        private decimal _points;
 
 
-        public SkiJumper(int id, string competitorName, float points)
+        public SkiJumper(int id, string competitorName, decimal points)
         {
             _id = id;
             _competitorName = competitorName;
@@ -26,7 +26,7 @@
             set { _competitorName = value; }
         }
 
-        public float Points
+        public decimal Points
         {
             get { return _points; }
             set { _points = value; }

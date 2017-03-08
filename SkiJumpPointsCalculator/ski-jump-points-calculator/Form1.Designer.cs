@@ -100,6 +100,7 @@
             this.roundGroupBox.TabIndex = 0;
             this.roundGroupBox.TabStop = false;
             this.roundGroupBox.Text = "Round 1";
+            this.roundGroupBox.Enter += new System.EventHandler(this.roundGroupBox_Enter);
             // 
             // pointsTextBox
             // 
