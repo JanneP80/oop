@@ -157,17 +157,32 @@ namespace SkiJumpPointsCalculator
 
         private void startGateComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            decimal parsedValue;
 
+            if (!decimal.TryParse(startGateComboBox.Text, out parsedValue))
+            {
+                startGateComboBox.Text = "";
+            }
         }
 
         private void jumpLengthTextBox_TextChanged(object sender, EventArgs e)
         {
+            decimal parsedValue;
 
+            if (!decimal.TryParse(jumpLengthTextBox.Text, out parsedValue))
+            {
+                jumpLengthTextBox.Text = "";
+            }
         }
 
         private void windMeterTextBox2_TextChanged(object sender, EventArgs e)
         {
+            decimal parsedValue;
 
+            if (!decimal.TryParse(windMeterTextBox2.Text, out parsedValue))
+            {
+                windMeterTextBox2.Text = "";
+            }
         }
 
         private void currentStandingsListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -182,32 +197,62 @@ namespace SkiJumpPointsCalculator
 
         private void hillSizeTextBox_TextChanged(object sender, EventArgs e)
         {
+            decimal parsedValue;
 
+            if (!decimal.TryParse(hillSizeTextBox.Text, out parsedValue))
+            {
+                hillSizeTextBox.Text = "";
+            }
         }
 
         private void jury1PointsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            decimal parsedValue;
 
+            if (!decimal.TryParse(jury1PointsComboBox.Text, out parsedValue))
+            {
+                jury1PointsComboBox.Text = "";
+            }
         }
 
         private void jury2PointsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            decimal parsedValue;
 
+            if (!decimal.TryParse(jury2PointsComboBox.Text, out parsedValue))
+            {
+                jury2PointsComboBox.Text = "";
+            }
         }
 
         private void jury3PointsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            decimal parsedValue;
 
+            if (!decimal.TryParse(jury3PointsComboBox.Text, out parsedValue))
+            {
+                jury3PointsComboBox.Text = "";
+            }
         }
 
         private void jury4PointsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            decimal parsedValue;
 
+            if (!decimal.TryParse(jury4PointsComboBox.Text, out parsedValue))
+            {
+                jury4PointsComboBox.Text = "";
+            }
         }
 
         private void jury5PointsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            decimal parsedValue;
 
+            if (!decimal.TryParse(jury5PointsComboBox.Text, out parsedValue))
+            {
+                jury5PointsComboBox.Text = "";
+            }
         }
 
         private void roundGroupBox_Enter(object sender, EventArgs e)
