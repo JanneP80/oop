@@ -19,7 +19,7 @@ namespace SkiJumpPointsCalculator
         public SkiJumpMainForm()
         {
             InitializeComponent();
-
+            /*
             object[] juryPoints =
             {
                 0,
@@ -63,7 +63,7 @@ namespace SkiJumpPointsCalculator
                 19,
                 19.5F,
                 20
-            };
+            };*/
 
             skiJumpers.Add(new SkiJumper(1, "Adam Malycz", 0));
             skiJumpers.Add(new SkiJumper(2, "Martin Schmitdt", 0));
@@ -73,12 +73,13 @@ namespace SkiJumpPointsCalculator
 
             competitorNameComboBox.DataSource = skiJumpers;
             competitorNameComboBox.DisplayMember = "competitorName";
-
-            jury1PointsComboBox.Items.AddRange(juryPoints);
-            jury2PointsComboBox.Items.AddRange(juryPoints);
+            /*
+            jury1PointsComboBox.Value(juryPoints);
+            jury2PointsComboBox.(juryPoints);
             jury3PointsComboBox.Items.AddRange(juryPoints);
             jury4PointsComboBox.Items.AddRange(juryPoints);
             jury5PointsComboBox.Items.AddRange(juryPoints);
+            */
         }
 
         private void SkiJumpMainForm_Load(object sender, EventArgs e)
@@ -120,7 +121,7 @@ namespace SkiJumpPointsCalculator
             //clearing for next jump
             jumpLengthTextBox.Text = "";
             pointsTextBox.Text = "";
-            jury1PointsComboBox.Text = null;
+            jury1PointsComboBox.Text = null; 
             jury2PointsComboBox.Text = null;
             jury3PointsComboBox.Text = null;
             jury4PointsComboBox.Text = null;
@@ -143,11 +144,11 @@ namespace SkiJumpPointsCalculator
             // var currentJumper = competitorNameComboBox.SelectedIndex;
             //var currentJumper = SkiJumpMainForm.competitorNameComboBox.SelectedIndex;
 
-            juryPoints = PointsCalculator.CalcJuryPoints(jury1PointsComboBox.Text, jury2PointsComboBox.Text, jury3PointsComboBox.Text,
-               jury4PointsComboBox.Text, jury5PointsComboBox.Text);
+            juryPoints = PointsCalculator.CalcJuryPoints(jury1PointsComboBox.Value, jury2PointsComboBox.Value, jury3PointsComboBox.Value,
+               jury4PointsComboBox.Value, jury5PointsComboBox.Value);
             lengthPoints = PointsCalculator.CalcLengthPoints(hillSizeTextBox.Text, jumpLengthTextBox.Text);
             gatePoints = PointsCalculator.CalcStartGatePoints(startGateComboBox.Text);
-            windPoints = PointsCalculator.CalcWindPoints(windMeterTextBox2.Text, hillSizeTextBox.Text);
+            windPoints = PointsCalculator.CalcWindPoints(windMeter1.Value, windMeter2.Value, windMeter3.Value, windMeter4.Value, windMeter5.Value, hillSizeTextBox.Text);
             jumpTotalPoints = juryPoints + lengthPoints + gatePoints + windPoints;
             
             pointsTextBox.AppendText("" + jumpTotalPoints);
@@ -172,16 +173,6 @@ namespace SkiJumpPointsCalculator
             if (!decimal.TryParse(jumpLengthTextBox.Text, out parsedValue))
             {
                 jumpLengthTextBox.Text = "";
-            }
-        }
-
-        private void windMeterTextBox2_TextChanged(object sender, EventArgs e)
-        {
-            decimal parsedValue;
-
-            if (!decimal.TryParse(windMeterTextBox2.Text, out parsedValue))
-            {
-                windMeterTextBox2.Text = "";
             }
         }
 
