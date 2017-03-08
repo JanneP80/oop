@@ -32,7 +32,6 @@
             this.pointsTextBox = new System.Windows.Forms.TextBox();
             this.jumpLengthTextBox = new System.Windows.Forms.TextBox();
             this.competitorNameComboBox = new System.Windows.Forms.ComboBox();
-            this.currentStandingsListView = new System.Windows.Forms.ListView();
             this.nextCompetitorButton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.calculatePointsButton = new System.Windows.Forms.Button();
@@ -62,6 +61,7 @@
             this.windMeter3 = new System.Windows.Forms.NumericUpDown();
             this.windMeter4 = new System.Windows.Forms.NumericUpDown();
             this.windMeter5 = new System.Windows.Forms.NumericUpDown();
+            this.currentStandingsListView = new System.Windows.Forms.RichTextBox();
             this.roundGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -83,6 +83,7 @@
             // 
             // roundGroupBox
             // 
+            this.roundGroupBox.Controls.Add(this.currentStandingsListView);
             this.roundGroupBox.Controls.Add(this.windMeter5);
             this.roundGroupBox.Controls.Add(this.windMeter4);
             this.roundGroupBox.Controls.Add(this.windMeter3);
@@ -96,7 +97,6 @@
             this.roundGroupBox.Controls.Add(this.pointsTextBox);
             this.roundGroupBox.Controls.Add(this.jumpLengthTextBox);
             this.roundGroupBox.Controls.Add(this.competitorNameComboBox);
-            this.roundGroupBox.Controls.Add(this.currentStandingsListView);
             this.roundGroupBox.Controls.Add(this.nextCompetitorButton);
             this.roundGroupBox.Controls.Add(this.label6);
             this.roundGroupBox.Controls.Add(this.calculatePointsButton);
@@ -121,16 +121,16 @@
             // 
             // pointsTextBox
             // 
-            this.pointsTextBox.Location = new System.Drawing.Point(270, 257);
+            this.pointsTextBox.Location = new System.Drawing.Point(471, 285);
             this.pointsTextBox.Name = "pointsTextBox";
             this.pointsTextBox.ReadOnly = true;
-            this.pointsTextBox.Size = new System.Drawing.Size(99, 22);
+            this.pointsTextBox.Size = new System.Drawing.Size(88, 22);
             this.pointsTextBox.TabIndex = 40;
             this.pointsTextBox.Text = "0";
             // 
             // jumpLengthTextBox
             // 
-            this.jumpLengthTextBox.Location = new System.Drawing.Point(253, 75);
+            this.jumpLengthTextBox.Location = new System.Drawing.Point(241, 77);
             this.jumpLengthTextBox.Name = "jumpLengthTextBox";
             this.jumpLengthTextBox.Size = new System.Drawing.Size(99, 22);
             this.jumpLengthTextBox.TabIndex = 39;
@@ -145,18 +145,9 @@
             this.competitorNameComboBox.TabIndex = 32;
             this.competitorNameComboBox.SelectedIndexChanged += new System.EventHandler(this.competitorNameComboBox_SelectedIndexChanged);
             // 
-            // currentStandingsListView
-            // 
-            this.currentStandingsListView.Location = new System.Drawing.Point(55, 217);
-            this.currentStandingsListView.Name = "currentStandingsListView";
-            this.currentStandingsListView.Size = new System.Drawing.Size(164, 127);
-            this.currentStandingsListView.TabIndex = 31;
-            this.currentStandingsListView.UseCompatibleStateImageBehavior = false;
-            this.currentStandingsListView.SelectedIndexChanged += new System.EventHandler(this.currentStandingsListView_SelectedIndexChanged);
-            // 
             // nextCompetitorButton
             // 
-            this.nextCompetitorButton.Location = new System.Drawing.Point(439, 254);
+            this.nextCompetitorButton.Location = new System.Drawing.Point(580, 325);
             this.nextCompetitorButton.Name = "nextCompetitorButton";
             this.nextCompetitorButton.Size = new System.Drawing.Size(144, 25);
             this.nextCompetitorButton.TabIndex = 30;
@@ -167,7 +158,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(267, 237);
+            this.label6.Location = new System.Drawing.Point(468, 265);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 17);
             this.label6.TabIndex = 29;
@@ -175,7 +166,7 @@
             // 
             // calculatePointsButton
             // 
-            this.calculatePointsButton.Location = new System.Drawing.Point(270, 195);
+            this.calculatePointsButton.Location = new System.Drawing.Point(324, 283);
             this.calculatePointsButton.Name = "calculatePointsButton";
             this.calculatePointsButton.Size = new System.Drawing.Size(131, 24);
             this.calculatePointsButton.TabIndex = 28;
@@ -237,16 +228,17 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(52, 187);
+            this.label2.Location = new System.Drawing.Point(52, 163);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 17);
+            this.label2.Size = new System.Drawing.Size(126, 17);
             this.label2.TabIndex = 20;
-            this.label2.Text = "Current Standings";
+            this.label2.Text = "Current Standings:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(139, 143);
+            this.label1.Location = new System.Drawing.Point(321, 233);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(262, 17);
             this.label1.TabIndex = 19;
@@ -577,6 +569,15 @@
             this.windMeter5.Size = new System.Drawing.Size(84, 22);
             this.windMeter5.TabIndex = 50;
             // 
+            // currentStandingsListView
+            // 
+            this.currentStandingsListView.Location = new System.Drawing.Point(18, 191);
+            this.currentStandingsListView.Name = "currentStandingsListView";
+            this.currentStandingsListView.Size = new System.Drawing.Size(241, 159);
+            this.currentStandingsListView.TabIndex = 51;
+            this.currentStandingsListView.Text = "";
+            this.currentStandingsListView.TextChanged += new System.EventHandler(this.currentStandingsListView_TextChanged);
+            // 
             // SkiJumpMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -632,7 +633,6 @@
         private System.Windows.Forms.Label label1HillSize;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1StartGate;
-        private System.Windows.Forms.ListView currentStandingsListView;
         private System.Windows.Forms.Button nextCompetitorButton;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox competitorNameComboBox;
@@ -650,6 +650,7 @@
         private System.Windows.Forms.NumericUpDown windMeter3;
         private System.Windows.Forms.NumericUpDown windMeter2;
         private System.Windows.Forms.NumericUpDown windMeter1;
+        private System.Windows.Forms.RichTextBox currentStandingsListView;
     }
 }
 
