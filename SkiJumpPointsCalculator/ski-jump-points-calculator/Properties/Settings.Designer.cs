@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ski_jump_points_calculator.Properties
+namespace SkiJumpPointsCalculator.Properties
 {
 
 

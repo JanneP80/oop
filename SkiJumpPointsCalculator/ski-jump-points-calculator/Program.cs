@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ski_jump_points_calculator
+namespace SkiJumpPointsCalculator
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace ski_jump_points_calculator
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new SkiJumpMainForm());
         }
     }
 }
