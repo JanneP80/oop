@@ -195,12 +195,13 @@ namespace SkiJumpPointsCalculator
             {
                 Console.WriteLine("non rounded wind {0}, ", windSumAvg);
             }
+
             //rounding wind
             var windSumAvg2 = (windSumAvg * (hillSize - 36) / 20);
             windSumAvg2 = windSumAvg2 * 2;
-            windSumAvg2 = (decimal) Convert.ToSingle(Math.Round(windSumAvg2, MidpointRounding.AwayFromZero));
+            windSumAvg2 = (Math.Round(windSumAvg2, MidpointRounding.AwayFromZero));
             windSumAvg2 = windSumAvg2 / 2;
-            windSumAvg2 = (decimal) Convert.ToSingle((windSumAvg2 * (decimal) 1.8));
+            windSumAvg2 = (windSumAvg2 * (decimal) 1.8);
 
             // K-point effects on "36" somehow // wind points
             string[] args4 = Environment.GetCommandLineArgs();

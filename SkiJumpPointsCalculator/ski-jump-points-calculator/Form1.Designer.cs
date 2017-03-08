@@ -131,6 +131,7 @@
             // 
             // jury5PointsComboBox
             // 
+            this.jury5PointsComboBox.FormatString = "N2";
             this.jury5PointsComboBox.FormattingEnabled = true;
             this.jury5PointsComboBox.Location = new System.Drawing.Point(439, 195);
             this.jury5PointsComboBox.Name = "jury5PointsComboBox";
@@ -141,6 +142,7 @@
             // 
             // jury4PointsComboBox
             // 
+            this.jury4PointsComboBox.FormatString = "N2";
             this.jury4PointsComboBox.FormattingEnabled = true;
             this.jury4PointsComboBox.Location = new System.Drawing.Point(439, 165);
             this.jury4PointsComboBox.Name = "jury4PointsComboBox";
@@ -151,6 +153,7 @@
             // 
             // jury3PointsComboBox
             // 
+            this.jury3PointsComboBox.FormatString = "N2";
             this.jury3PointsComboBox.FormattingEnabled = true;
             this.jury3PointsComboBox.Location = new System.Drawing.Point(439, 135);
             this.jury3PointsComboBox.Name = "jury3PointsComboBox";
@@ -161,6 +164,7 @@
             // 
             // jury2PointsComboBox
             // 
+            this.jury2PointsComboBox.FormatString = "N2";
             this.jury2PointsComboBox.FormattingEnabled = true;
             this.jury2PointsComboBox.Location = new System.Drawing.Point(439, 105);
             this.jury2PointsComboBox.Name = "jury2PointsComboBox";
@@ -171,6 +175,7 @@
             // 
             // jury1PointsComboBox
             // 
+            this.jury1PointsComboBox.FormatString = "N2";
             this.jury1PointsComboBox.FormattingEnabled = true;
             this.jury1PointsComboBox.Location = new System.Drawing.Point(439, 75);
             this.jury1PointsComboBox.Name = "jury1PointsComboBox";
@@ -388,6 +393,7 @@
             // 
             // startGateComboBox
             // 
+            this.startGateComboBox.FormatString = "N2";
             this.startGateComboBox.FormattingEnabled = true;
             this.startGateComboBox.Location = new System.Drawing.Point(451, 121);
             this.startGateComboBox.Name = "startGateComboBox";

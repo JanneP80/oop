@@ -147,7 +147,7 @@ namespace SkiJumpPointsCalculator
                jury4PointsComboBox.Text, jury5PointsComboBox.Text);
             lengthPoints = PointsCalculator.CalcLengthPoints(hillSizeTextBox.Text, jumpLengthTextBox.Text);
             gatePoints = PointsCalculator.CalcStartGatePoints(startGateComboBox.Text);
-            windPoints = PointsCalculator.CalcWindPoints(windMeterTextBox2.Text, startGateComboBox.Text);
+            windPoints = PointsCalculator.CalcWindPoints(windMeterTextBox2.Text, hillSizeTextBox.Text);
             jumpTotalPoints = juryPoints + lengthPoints + gatePoints + windPoints;
             
             pointsTextBox.AppendText("" + jumpTotalPoints);
