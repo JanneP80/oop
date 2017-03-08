@@ -59,16 +59,19 @@
             this.label1StartGate = new System.Windows.Forms.Label();
             this.hillSizeTextBox = new System.Windows.Forms.TextBox();
             this.startGateComboBox = new System.Windows.Forms.ComboBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.roundGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // roundGroupBox
             // 
+            this.roundGroupBox.Controls.Add(this.numericUpDown1);
             this.roundGroupBox.Controls.Add(this.pointsTextBox);
             this.roundGroupBox.Controls.Add(this.jumpLengthTextBox);
             this.roundGroupBox.Controls.Add(this.windMeterTextBox2);
@@ -402,6 +405,25 @@
             this.startGateComboBox.Text = "0";
             this.startGateComboBox.SelectedIndexChanged += new System.EventHandler(this.startGateComboBox_SelectedIndexChanged);
             // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.AllowDrop = true;
+            this.numericUpDown1.DecimalPlaces = 1;
+            this.numericUpDown1.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.numericUpDown1.Location = new System.Drawing.Point(640, 217);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDown1.TabIndex = 41;
+            // 
             // SkiJumpMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -423,6 +445,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -461,6 +484,7 @@
         private System.Windows.Forms.ComboBox jury1PointsComboBox;
         private System.Windows.Forms.TextBox hillSizeTextBox;
         private System.Windows.Forms.ComboBox startGateComboBox;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }
 
