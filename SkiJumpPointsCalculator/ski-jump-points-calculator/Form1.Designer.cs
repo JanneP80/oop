@@ -379,7 +379,6 @@
             // 
             // competitorNameComboBox
             // 
-            this.competitorNameComboBox.FormattingEnabled = true;
             this.competitorNameComboBox.Location = new System.Drawing.Point(55, 75);
             this.competitorNameComboBox.Name = "competitorNameComboBox";
             this.competitorNameComboBox.Size = new System.Drawing.Size(164, 24);

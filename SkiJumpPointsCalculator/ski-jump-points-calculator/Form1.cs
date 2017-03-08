@@ -77,24 +77,38 @@ namespace SkiJumpPointsCalculator
             jury4PointsComboBox.Text = null;
             jury5PointsComboBox.Text = null;
 
-            competitorNameComboBox.Focus(); // ready for next jumper
-                                            // if all jumpers have jumped, then next round
-                                            // ---> 
-                                            // roundGroupBox.Text = "Round 2";
+            // competitorNameComboBox.SelectedIndex = competitorNameComboBox.SelectedIndex + 1;
+            // jumpLengthTextBox.Focus();
+            // competitorNameComboBox.Focus(); // ready for next jumper
+            // if all jumpers have jumped, then next round
+            // ---> 
+            // roundGroupBox.Text = "Round 2";
             if (hasJumped.Count == skiJumpers.Count)
             {
                 if (roundGroupBox.Text == "Round 2") // end of competition
                 {
                     // skiJumpers=roundOneResults + skiJumpers;
-
+                    label2.ForeColor = Color.Crimson;
+                    label2.Text = "Final Standings";
                 }
-                // new round happens
-                roundGroupBox.Text = "Round 2";
-                // turn jumping order
-                hasJumped.Clear();
-                
-                roundOneResults = skiJumpers;
-                // clear standings
+                else
+                {
+                    // new round happens
+                    roundGroupBox.Text = "Round 2";
+                    // turn jumping order
+                    hasJumped.Clear();
+
+                    roundOneResults = skiJumpers;
+                    // clear standings
+                    skiJumpers.Reverse();
+                    competitorNameComboBox.DataSource = skiJumpers;
+                    competitorNameComboBox.DisplayMember = "competitorName";
+                }
+            }
+            else
+            {
+                competitorNameComboBox.SelectedIndex = competitorNameComboBox.SelectedIndex + 1;
+                jumpLengthTextBox.Focus();
             }
         }
 
@@ -114,16 +128,16 @@ namespace SkiJumpPointsCalculator
             decimal jumpTotalPoints = 0;
             // var currentJumper = competitorNameComboBox.SelectedIndex;
             //var currentJumper = SkiJumpMainForm.competitorNameComboBox.SelectedIndex;
-            
+
             //foreach (int r in hasJumped.Intersect)
-                for (int i = 0; i < hasJumped.Count; i++)
+            for (int i = 0; i < hasJumped.Count; i++)
+            {
+                if (skiJumpers[competitorNameComboBox.SelectedIndex].Id == hasJumped[i])
                 {
-                    if (skiJumpers[competitorNameComboBox.SelectedIndex].Id == hasJumped[i])
-                    {
-                        errorMessage.Visible = true;
-                        goto nahno;
-                    }
+                    errorMessage.Visible = true;
+                    goto nahno;
                 }
+            }
 
             juryPoints = PointsCalculator.CalcJuryPoints(jury1PointsComboBox.Value, jury2PointsComboBox.Value, jury3PointsComboBox.Value,
                jury4PointsComboBox.Value, jury5PointsComboBox.Value);
@@ -139,7 +153,7 @@ namespace SkiJumpPointsCalculator
                 jumpTotalPoints = jumpTotalPoints + skiJumpers[competitorNameComboBox.SelectedIndex].Points;
             }
             skiJumpers[competitorNameComboBox.SelectedIndex].Points = jumpTotalPoints; // Add points on competitor
-            
+
             nahno:
             ;
         }
