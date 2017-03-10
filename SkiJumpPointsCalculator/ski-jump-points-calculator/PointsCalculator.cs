@@ -9,7 +9,7 @@ namespace SkiJumpPointsCalculator
     {
         internal static decimal CalcWindPoints(decimal wind1, decimal wind2, decimal wind3, decimal wind4, decimal wind5, decimal text2)
         {
-            var hillSize = Convert.ToDecimal(text2);
+            var hillSize = text2;
             List<decimal> windList = new List<decimal>() { wind1, wind2, wind3, wind4, wind5 }; // windmeter list
             decimal windSumAvg = windList.Sum();
 

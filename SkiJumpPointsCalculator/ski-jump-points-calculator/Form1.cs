@@ -54,13 +54,13 @@ namespace SkiJumpPointsCalculator
 
 
             //clearing fields for the next jump
-            jumpLengthTextBox.Text = "";
-            pointsTextBox.Text = "";
-            jury1PointsComboBox.Text = null;
-            jury2PointsComboBox.Text = null;
-            jury3PointsComboBox.Text = null;
-            jury4PointsComboBox.Text = null;
-            jury5PointsComboBox.Text = null;
+            jumpLengthTextBox.Value = 0;
+            pointsTextBox.Value = 0;
+            jury1PointsComboBox.Value = 18;
+            jury2PointsComboBox.Value = 18;
+            jury3PointsComboBox.Value = 18;
+            jury4PointsComboBox.Value = 18;
+            jury5PointsComboBox.Value = 18;
 
             // competitorNameComboBox.SelectedIndex = competitorNameComboBox.SelectedIndex + 1;
             // jumpLengthTextBox.Focus();
