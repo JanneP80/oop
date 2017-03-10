@@ -59,9 +59,10 @@ namespace SkiJumpPointsCalculator
             return points;
         }
 
-        internal static decimal CalcLengthPoints(string hillSizeTextBox, decimal jumpLengthTextBox)
+        internal static decimal CalcLengthPoints(decimal hillSizeTextBox, decimal jumpLengthTextBox)
         {
-            var hillSize = Convert.ToDecimal(hillSizeTextBox);
+            // var hillSize = Convert.ToDecimal(hillSizeTextBox);
+            var hillSize = hillSizeTextBox;
             var jumpLength2 = jumpLengthTextBox;
 
             decimal points = 0;
@@ -99,11 +100,6 @@ namespace SkiJumpPointsCalculator
                 Console.WriteLine("jury points, {0}", jurypoints);
             }
             return jurypoints;
-        }
-
-        public static void calculatePoints(object p, Int32 jumpLength2, float sumAvg, List<float> juryPoints)
-        {
-
         }
     }
 }

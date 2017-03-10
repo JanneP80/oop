@@ -40,13 +40,6 @@ namespace SkiJumpPointsCalculator
 
         private void nextCompetitorButton_Click(object sender, EventArgs e)
         {
-            decimal parsevalue;
-            if (!decimal.TryParse(pointsTextBox.Text, out parsevalue))
-            {
-                pointsTextBox.Text = "0"; // Also fucntions as: competitor is not jumping and gets 0 points here
-            }
-            var points = decimal.Parse(pointsTextBox.Text);
-
             string[] args = Environment.GetCommandLineArgs(); // show in console points is set ok
             foreach (string arg in args)
             {
@@ -82,6 +75,14 @@ namespace SkiJumpPointsCalculator
                     // skiJumpers=roundOneResults + skiJumpers;
                     label2.ForeColor = Color.Crimson;
                     label2.Text = "Final Standings";
+                    skiJumpers = skiJumpers.OrderByDescending(x => x.Points).ToList();
+                    int p = 1;
+
+                    foreach (var skijumper in skiJumpers)
+                    {
+                        currentStandingsListView.Text += p + ". " + skijumper.CompetitorName + "\t" + skijumper.Points + " Points\n";
+                        p++;
+                    }
                 }
                 else
                 {
@@ -91,6 +92,14 @@ namespace SkiJumpPointsCalculator
                     hasJumped.Clear();
 
                     roundOneResults = skiJumpers; // can be used somewhere
+                    skiJumpers = skiJumpers.OrderByDescending(x => x.Points).ToList();
+                    int p = 1;
+
+                    foreach (var skijumper in skiJumpers)
+                    {
+                        currentStandingsListView.Text += p + ". " + skijumper.CompetitorName + "\t" + skijumper.Points + " Points\n";
+                        p++;
+                    }
                     // clear standings
                     skiJumpers.Reverse();
                     competitorNameComboBox.DataSource = skiJumpers;
@@ -119,13 +128,6 @@ namespace SkiJumpPointsCalculator
 
         private void calculatePointsButton_Click(object sender, EventArgs e)
         {
-            decimal parsevalue;
-            if (!decimal.TryParse(jumpLengthTextBox.Text, out parsevalue))
-            {
-                jumpLengthTextBox.Text = "0"; // Also fucntions as: competitor is not jumping and gets 0 points here
-            }
-            var points = decimal.Parse(jumpLengthTextBox.Text);
-
             decimal juryPoints = 0;
             decimal lengthPoints = 0;
             decimal gatePoints = 0;
@@ -146,7 +148,7 @@ namespace SkiJumpPointsCalculator
 
             juryPoints = PointsCalculator.CalcJuryPoints(jury1PointsComboBox.Value, jury2PointsComboBox.Value, jury3PointsComboBox.Value,
                jury4PointsComboBox.Value, jury5PointsComboBox.Value);
-            lengthPoints = PointsCalculator.CalcLengthPoints(hillSizeTextBox.Text, jumpLengthTextBox.Value);
+            lengthPoints = PointsCalculator.CalcLengthPoints(hillSizeTextBox.Value, jumpLengthTextBox.Value);
             gatePoints = PointsCalculator.CalcStartGatePoints(startGateComboBox.Value);
             windPoints = PointsCalculator.CalcWindPoints(windMeter1.Value, windMeter2.Value, windMeter3.Value, windMeter4.Value, windMeter5.Value, hillSizeTextBox.Value);
             jumpTotalPoints = juryPoints + lengthPoints + gatePoints + windPoints;
@@ -163,6 +165,7 @@ namespace SkiJumpPointsCalculator
             ;
         }
 
+/*
         private void jumpLengthTextBox_TextChanged(object sender, EventArgs e)
         {
             decimal parsedValue;
@@ -172,12 +175,14 @@ namespace SkiJumpPointsCalculator
                 jumpLengthTextBox.Text = "";
             }
         }
+*/
 
         private void competitorNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             errorMessage.Visible = false;
         }
 
+/*
         private void hillSizeTextBox_TextChanged(object sender, EventArgs e)
         {
             decimal parsedValue;
@@ -187,6 +192,7 @@ namespace SkiJumpPointsCalculator
                 hillSizeTextBox.Text = "";
             }
         }
+*/
 
         private void roundGroupBox_Enter(object sender, EventArgs e)
         {
