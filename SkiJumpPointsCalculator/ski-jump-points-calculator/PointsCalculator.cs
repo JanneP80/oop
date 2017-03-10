@@ -7,23 +7,12 @@ namespace SkiJumpPointsCalculator
 {
     internal class PointsCalculator
     {
-        public static void gatherAllDataFromFields()
-        {
-            //TODO!!! tyhjä klikkaus pois
-
-            string[] args = Environment.GetCommandLineArgs();
-            foreach (string arg in args)
-            {
-                Console.WriteLine("Checking calculations: ");
-            }
-        }
-
-        internal static decimal CalcWindPoints(decimal wind1, decimal wind2, decimal wind3, decimal wind4, decimal wind5, string text2)
+        internal static decimal CalcWindPoints(decimal wind1, decimal wind2, decimal wind3, decimal wind4, decimal wind5, decimal text2)
         {
             var hillSize = Convert.ToDecimal(text2);
             List<decimal> windList = new List<decimal>() { wind1, wind2, wind3, wind4, wind5 }; // windmeter list
             decimal windSumAvg = windList.Sum();
-            
+
             windSumAvg = (windSumAvg / 5); // non-rounded
 
             string[] args2 = Environment.GetCommandLineArgs();
@@ -48,11 +37,12 @@ namespace SkiJumpPointsCalculator
             return windSumAvg2;
         }
 
-        internal static decimal CalcStartGatePoints(string text)
+        internal static decimal CalcStartGatePoints(decimal text)
         {
-            var startingLevel = decimal.Parse(text);
+            // var startingLevel = decimal.Parse(text);
+            var startingLevel = text;
             decimal levelEffect = 0;
-            var points = 0 + (decimal)+levelEffect;
+            var points = 0 + levelEffect;
 
             // jos lähtee ylempää vähennetään pituusmetreinä 1m = 5m eli 5x lavanmuutos
             // näin voi laittaa kertoimeksi -5, jolloin menee suoraan syötetyllä lavamuutoksella
@@ -69,10 +59,10 @@ namespace SkiJumpPointsCalculator
             return points;
         }
 
-        internal static decimal CalcLengthPoints(string hillSizeTextBox, string jumpLengthTextBox)
+        internal static decimal CalcLengthPoints(string hillSizeTextBox, decimal jumpLengthTextBox)
         {
             var hillSize = Convert.ToDecimal(hillSizeTextBox);
-            var jumpLength2 = Convert.ToDecimal(jumpLengthTextBox);
+            var jumpLength2 = jumpLengthTextBox;
 
             decimal points = 0;
 
@@ -98,7 +88,7 @@ namespace SkiJumpPointsCalculator
         internal static decimal CalcJuryPoints(decimal judge1, decimal judge2, decimal judge3, decimal judge4, decimal judge5)
         {
             List<decimal> juryPoints = new List<decimal>() { judge1, judge2, judge3, judge4, judge5 }; // jury points list x5 for each jury member
-            
+
             juryPoints.Sort((x, y) => x.CompareTo(y));
             var jurypoints = juryPoints[1] + juryPoints[2] + juryPoints[3];
 
