@@ -148,10 +148,10 @@ namespace SkiJumpPointsCalculator
                jury4PointsComboBox.Value, jury5PointsComboBox.Value);
             lengthPoints = PointsCalculator.CalcLengthPoints(hillSizeTextBox.Text, jumpLengthTextBox.Value);
             gatePoints = PointsCalculator.CalcStartGatePoints(startGateComboBox.Value);
-            windPoints = PointsCalculator.CalcWindPoints(windMeter1.Value, windMeter2.Value, windMeter3.Value, windMeter4.Value, windMeter5.Value, hillSizeTextBox.Text);
+            windPoints = PointsCalculator.CalcWindPoints(windMeter1.Value, windMeter2.Value, windMeter3.Value, windMeter4.Value, windMeter5.Value, hillSizeTextBox.Value);
             jumpTotalPoints = juryPoints + lengthPoints + gatePoints + windPoints;
 
-            pointsTextBox.AppendText("" + jumpTotalPoints);
+            pointsTextBox.Value = jumpTotalPoints;
             if (roundGroupBox.Text == "Round 2") // second round of competition
             {
                 // skiJumpers=roundOneResults + skiJumpers;

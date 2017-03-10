@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.roundGroupBox = new System.Windows.Forms.GroupBox();
+            this.pointsTextBox = new System.Windows.Forms.NumericUpDown();
+            this.jumpLengthTextBox = new System.Windows.Forms.NumericUpDown();
             this.errorMessage = new System.Windows.Forms.Label();
             this.currentStandingsListView = new System.Windows.Forms.RichTextBox();
             this.windMeter5 = new System.Windows.Forms.NumericUpDown();
@@ -60,10 +62,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1StartGate = new System.Windows.Forms.Label();
             this.startGateComboBox = new System.Windows.Forms.NumericUpDown();
-            this.jumpLengthTextBox = new System.Windows.Forms.NumericUpDown();
             this.hillSizeTextBox = new System.Windows.Forms.NumericUpDown();
-            this.pointsTextBox = new System.Windows.Forms.NumericUpDown();
             this.roundGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pointsTextBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jumpLengthTextBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.windMeter5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.windMeter4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.windMeter3)).BeginInit();
@@ -80,9 +82,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.startGateComboBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jumpLengthTextBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hillSizeTextBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pointsTextBox)).BeginInit();
             this.SuspendLayout();
             // 
             // roundGroupBox
@@ -123,6 +123,44 @@
             this.roundGroupBox.TabStop = false;
             this.roundGroupBox.Text = "Round 1";
             this.roundGroupBox.Enter += new System.EventHandler(this.roundGroupBox_Enter);
+            // 
+            // pointsTextBox
+            // 
+            this.pointsTextBox.DecimalPlaces = 1;
+            this.pointsTextBox.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.pointsTextBox.Location = new System.Drawing.Point(471, 285);
+            this.pointsTextBox.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.pointsTextBox.Name = "pointsTextBox";
+            this.pointsTextBox.ReadOnly = true;
+            this.pointsTextBox.Size = new System.Drawing.Size(120, 22);
+            this.pointsTextBox.TabIndex = 54;
+            // 
+            // jumpLengthTextBox
+            // 
+            this.jumpLengthTextBox.DecimalPlaces = 1;
+            this.jumpLengthTextBox.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.jumpLengthTextBox.Location = new System.Drawing.Point(253, 77);
+            this.jumpLengthTextBox.Maximum = new decimal(new int[] {
+            250,
+            0,
+            0,
+            0});
+            this.jumpLengthTextBox.Name = "jumpLengthTextBox";
+            this.jumpLengthTextBox.Size = new System.Drawing.Size(120, 22);
+            this.jumpLengthTextBox.TabIndex = 3;
+            this.jumpLengthTextBox.ValueChanged += new System.EventHandler(this.jumpLengthTextBox_ValueChanged);
             // 
             // errorMessage
             // 
@@ -569,28 +607,17 @@
             this.startGateComboBox.TabIndex = 1;
             this.startGateComboBox.ValueChanged += new System.EventHandler(this.startGateComboBox_ValueChanged);
             // 
-            // jumpLengthTextBox
-            // 
-            this.jumpLengthTextBox.Location = new System.Drawing.Point(253, 77);
-            this.jumpLengthTextBox.Name = "jumpLengthTextBox";
-            this.jumpLengthTextBox.Size = new System.Drawing.Size(120, 22);
-            this.jumpLengthTextBox.TabIndex = 3;
-            this.jumpLengthTextBox.ValueChanged += new System.EventHandler(this.jumpLengthTextBox_ValueChanged);
-            // 
             // hillSizeTextBox
             // 
             this.hillSizeTextBox.Location = new System.Drawing.Point(67, 122);
+            this.hillSizeTextBox.Maximum = new decimal(new int[] {
+            250,
+            0,
+            0,
+            0});
             this.hillSizeTextBox.Name = "hillSizeTextBox";
             this.hillSizeTextBox.Size = new System.Drawing.Size(120, 22);
             this.hillSizeTextBox.TabIndex = 0;
-            // 
-            // pointsTextBox
-            // 
-            this.pointsTextBox.Location = new System.Drawing.Point(471, 285);
-            this.pointsTextBox.Name = "pointsTextBox";
-            this.pointsTextBox.ReadOnly = true;
-            this.pointsTextBox.Size = new System.Drawing.Size(120, 22);
-            this.pointsTextBox.TabIndex = 54;
             // 
             // SkiJumpMainForm
             // 
@@ -608,6 +635,8 @@
             this.Load += new System.EventHandler(this.SkiJumpMainForm_Load);
             this.roundGroupBox.ResumeLayout(false);
             this.roundGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pointsTextBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jumpLengthTextBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.windMeter5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.windMeter4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.windMeter3)).EndInit();
@@ -624,9 +653,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.startGateComboBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jumpLengthTextBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hillSizeTextBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pointsTextBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
