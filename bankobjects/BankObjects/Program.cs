@@ -12,23 +12,26 @@ namespace BankObjects
     {
         static void Main(string[] args)
         {
-            var bankObject = new BankObject("Deutche Bank");
+            var bank = new Bank("Deutche Bank");
 
-            List<CustomerObject> customers = new List<CustomerObject>();
+            List<Customer> customers = new List<Customer>();
 
-            customers.Add(new CustomerObject("Erkki", "Liikanen", bankObject.CreateNewAccount()));
-            customers.Add(new CustomerObject("Sirkka", "Hämäläinen", bankObject.CreateNewAccount()));
-            customers.Add(new CustomerObject("Rolf", "Kullberg", bankObject.CreateNewAccount()));
+            customers.Add(new Customer("Erkki", "Liikanen", bank.CreateNewAccount()));
+            customers.Add(new Customer("Sirkka", "Hämäläinen", bank.CreateNewAccount()));
+            customers.Add(new Customer("Rolf", "Kullberg", bank.CreateNewAccount()));
 
             // 5. Adding first deposits on everybodys account:
-            var account1 = new AccountObject(customers[0].Accountnumber);
-            account1.CreateNewAccountActivity(new DateTime(2016, 6, 3), new TimeSpan(9, 10, 3), 1000300);
 
-            var account2 = new AccountObject(customers[1].Accountnumber);
-            account2.CreateNewAccountActivity(new DateTime(2016, 7, 2), new TimeSpan(19, 20, 14), 2000100);
+            // TODO!!! korjaa nämä pois ja vaihda tilalle tarkoitetun mukainen 
 
-            var account3 = new AccountObject(customers[2].Accountnumber);
-            account3.CreateNewAccountActivity(new DateTime(2016, 8, 1), new TimeSpan(5, 50, 45), 3000200);
+            var account1 = new Account(customers[0].AccountNumber);
+            account1.CreateNewAccountActivity(new DateTime(2016, 6, 3, 9, 10, 3), 1000300);
+
+            var account2 = new Account(customers[1].AccountNumber);
+            account2.CreateNewAccountActivity(new DateTime(2016, 7, 2, 19, 20, 14), 2000100);
+
+            var account3 = new Account(customers[2].AccountNumber);
+            account3.CreateNewAccountActivity(new DateTime(2016, 8, 1,5, 50, 45), 3000200);
 
             // 6. Printing all balances with to string:
             Console.WriteLine("\nPrinting every customers balance after first deposit: ");
@@ -37,16 +40,16 @@ namespace BankObjects
             Console.WriteLine("Customer 3, " + customers[2].ToString() + " Balance: " + account3.Balance);
 
             // 7. Creating new withdraws on accounts
-            account3.CreateNewAccountActivity(new DateTime(2016, 9, 9), new TimeSpan(6, 41, 45), -300200);
-            account1.CreateNewAccountActivity(new DateTime(2016, 8, 12), new TimeSpan(4, 20, 4), -7300);
-            account2.CreateNewAccountActivity(new DateTime(2017, 1, 12), new TimeSpan(7, 15, 4), -20700);
-            account2.CreateNewAccountActivity(new DateTime(2017, 2, 24), new TimeSpan(19, 30, 0), -11300);
+            account3.CreateNewAccountActivity(new DateTime(2016, 9, 9,6, 41, 45), -300200);
+            account1.CreateNewAccountActivity(new DateTime(2016, 8, 12,4, 20, 4), -7300);
+            account2.CreateNewAccountActivity(new DateTime(2017, 1, 12,7, 15, 4), -20700);
+            account2.CreateNewAccountActivity(new DateTime(2017, 2, 24,19, 30, 0), -11300);
 
-            account3.CreateNewAccountActivity(new DateTime(2016, 10, 21), new TimeSpan(16, 11, 45), -10240);
-            account1.CreateNewAccountActivity(new DateTime(2017, 1, 19), new TimeSpan(14, 21, 14), -2300);
-            account2.CreateNewAccountActivity(new DateTime(2017, 3, 1), new TimeSpan(17, 43, 24), -704);
-            account2.CreateNewAccountActivity(new DateTime(2017, 2, 24), new TimeSpan(22, 32, 6), -1300);
-            account1.CreateNewAccountActivity(new DateTime(2016, 11, 12), new TimeSpan(11, 11, 14), -12300);
+            account3.CreateNewAccountActivity(new DateTime(2016, 10, 21,16, 11, 45), -10240);
+            account1.CreateNewAccountActivity(new DateTime(2017, 1, 19,14, 21, 14), -2300);
+            account2.CreateNewAccountActivity(new DateTime(2017, 3, 1,17, 43, 24), -704);
+            account2.CreateNewAccountActivity(new DateTime(2017, 2, 24,22, 32, 6), -1300);
+            account1.CreateNewAccountActivity(new DateTime(2016, 11, 12,11, 11, 14), -12300);
 
             Console.WriteLine("\nPrinting every customers all transactions: ");
             Console.WriteLine("\nCustomer 1 " + customers[0]);
@@ -75,7 +78,7 @@ namespace BankObjects
             Console.WriteLine("\nCustomer 2 timeintervall 1-3 months " + customers[1]);
             for (int i = 0; i < account2.AccountActivity.Count; i++)
             {
-                if (account2.AccountActivity[i].Date.Month > (1) && account2.AccountActivity[i].Date.Month < (3))
+                if (account2.AccountActivity[i].TimeStamp.Month > (1) && account2.AccountActivity[i].TimeStamp.Month < (3))
                 {
                     Console.WriteLine(account2.AccountActivity[i]);
                 }
@@ -87,19 +90,19 @@ namespace BankObjects
             var time = new TimeSpan(24 * 30 * 6, 0, 0); // hours * days * 6 = 6 months
             var startTime = endTime.Date - time;
             Console.WriteLine("\nAll activity in the bank for the past 6 months: ");
-            PrintTransactions(account1.PrintOutActivityOnTimeIntervall(startTime, endTime), customers[0]);
-            PrintTransactions(account2.PrintOutActivityOnTimeIntervall(startTime, endTime), customers[1]);
-            PrintTransactions(account3.PrintOutActivityOnTimeIntervall(startTime, endTime), customers[2]);
+            PrintTransactions(account1.FindActivitiesOnTimeIntervall(startTime, endTime), customers[0]);
+            PrintTransactions(account2.FindActivitiesOnTimeIntervall(startTime, endTime), customers[1]);
+            PrintTransactions(account3.FindActivitiesOnTimeIntervall(startTime, endTime), customers[2]);
 
             Console.ReadKey();
         }
 
-        static void PrintTransactions(List<AccountActivityObject> AccountActivity, CustomerObject customer)
+        static void PrintTransactions(List<AccountActivity> AccountActivity, Customer customer)
         {
-            Console.WriteLine("\nTransactions ({0} {1}):", customer.Firstname, customer.Lastname);
+            Console.WriteLine("\nTransactions ({0} {1}):", customer.FirstName, customer.LastName);
             for (int i = 0; i < AccountActivity.Count(); i++)
             {
-                Console.WriteLine("{0}\t{1}\t{2}{3:0.00}", AccountActivity[i].Date.ToShortDateString(), AccountActivity[i].Time, AccountActivity[i].Sum >= 0 ? "+" : "", AccountActivity[i].Sum);
+                Console.WriteLine("{0}\t{1}\t{2}{3:0.00}", AccountActivity[i].TimeStamp.ToShortDateString(), AccountActivity[i].TimeStamp, AccountActivity[i].Sum >= 0 ? "+" : "", AccountActivity[i].Sum);
             }
             //Console.WriteLine("Balance on the timeinterval: ");
             Console.WriteLine("\n");

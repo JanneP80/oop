@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace BankObjects
 {
-    class AccountObject
+    class Account
     {
         private string _accountnumber;
-        private List<AccountActivityObject> _accountactivity;
+        private List<AccountActivity> _accountactivity;
         private double _balance;
 
-        public AccountObject(string accountnumber)
+        public Account(string accountnumber)
         {
             _accountnumber = accountnumber;
-            _accountactivity = new List<AccountActivityObject>();
+            _accountactivity = new List<AccountActivity>();
             _balance = Balance;
         }
 
@@ -25,17 +25,17 @@ namespace BankObjects
             set { _accountnumber = value; }
         }
 
-        public List<AccountActivityObject> AccountActivity
+        public List<AccountActivity> AccountActivity
         {
-            // get { return _accountactivity; }
-            set { _accountactivity = value; }
+             get { return _accountactivity; }
+            /*set { _accountactivity = value; }
 
             get
             {
                 return (from AccountActivity in _accountactivity
                         orderby AccountActivity.Date
                         select AccountActivity).ToList();
-            }
+            }*/
         }
 
         public double Balance
@@ -44,21 +44,38 @@ namespace BankObjects
             set { _balance = value; }
         }
 
-
-        public double CreateNewAccountActivity(DateTime date, TimeSpan time, double transferSum)
+        public void AddEvent(double amount, DateTime date)
         {
-            Balance = Balance + transferSum;
-            _accountactivity.Add(new AccountActivityObject(date, time, transferSum));
-            return Balance;
+            _accountactivity.Add(new AccountActivity(date, amount));
+            _balance += amount;
         }
 
-        public List<AccountActivityObject> PrintOutActivityOnTimeIntervall(DateTime startActivity, DateTime endActivity)
+        public double CreateNewAccountActivity(DateTime date, double transferSum)
         {
-            List<AccountActivityObject> res = (from transaction in _accountactivity
+            Balance = Balance + transferSum;
+            _accountactivity.Add(new AccountActivity(date, transferSum));
+            return Balance;
+        }
+       
+        /*
+        public List<BankAccountEvent> GetEventsByDateBetween(DateTime fromDate, DateTime toDate)
+        {
+            return _accountEvents.FindAll(e => e.TimeStamp >= fromDate && e.TimeStamp <= toDate)
+                .OrderBy(e => e.TimeStamp)
+                .ToList();
+        }*/
+        public List<AccountActivity> FindActivitiesOnTimeIntervall(DateTime startActivity, DateTime endActivity)
+        {
+            /*
+            List<AccountActivity> res = (from transaction in _accountactivity
                                                where transaction.Date >= startActivity && transaction.Date <= endActivity
                                                orderby transaction.Date
                                                select transaction).ToList();
             return res;
+            */
+            return _accountactivity.FindAll(e => e.TimeStamp >= startActivity && e.TimeStamp <= endActivity)
+                .OrderBy(e => e.TimeStamp)
+                .ToList();
         }
 
         /*
