@@ -155,7 +155,7 @@ namespace SkiJumpScoreBoard
             // skiJumpers[currentJumper].Points =
             var startingLevel = float.Parse(SkiJumpMainForm.startGateComboBox.Text);
             // Tuulen voimakkuuden keskiarvo x (K - piste - 36) / 20
-            //var _jurypoints;
+            // var _jurypoints;
 
             juryPoints.Sort((x, y) => x.CompareTo(y));
             var jurypoints = juryPoints[1] + juryPoints[2] + juryPoints[3];
@@ -164,9 +164,7 @@ namespace SkiJumpScoreBoard
 
             foreach (string arg in args2)
             {
-                // Console.WriteLine("wind {0}", WindList[2]);
                 Console.WriteLine("jury points, {0}", jurypoints);
-                // do stuff
             }
 
             var points = 0 + (double)+jurypoints;
@@ -183,7 +181,6 @@ namespace SkiJumpScoreBoard
                 foreach (string arg in args3)
                 {
                     Console.WriteLine("starting level: {0}", levelEffect);
-                    //Console.WriteLine("jury 2 {1} and 3 {2}:", juryPoints[2], juryPoints[3]);
                 }
             }
 
@@ -198,15 +195,11 @@ namespace SkiJumpScoreBoard
                 foreach (string arg in args3)
                 {
                     Console.WriteLine("starting level: {0}", (levelEffect * 1.8));
-                    //Console.WriteLine("jury 2 {1} and 3 {2}:", juryPoints[2], juryPoints[3]);
                 }
             }
 
-
             if (jumpLength2 > Convert.ToInt32(SkiJumpMainForm.hillSizeTextBox.Text)) // hill size =textbox3
             {
-                //points += 60;
-
                 points += 60 + ((jumpLength2 - hillSize) * 1.8); // jump over K
                                                                  //
                 string[] args5 = Environment.GetCommandLineArgs();
@@ -214,8 +207,7 @@ namespace SkiJumpScoreBoard
                 {
                     Console.WriteLine(" jump points: {0}", points);
                 }
-
-                //
+                // not even nessessary to do this comparision. just calc directly always compared to 0 start level
 
             }
             else // how about under k-point
@@ -237,11 +229,9 @@ namespace SkiJumpScoreBoard
             foreach (string arg in args4)
             {
                 Console.WriteLine(" wind points: {0}", windSumAvg2);
-
             }
             //
             SkiJumpMainForm.pointsTextBox.AppendText("" + points);
-
         }
     }
 }

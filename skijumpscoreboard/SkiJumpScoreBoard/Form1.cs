@@ -165,8 +165,15 @@ namespace SkiJumpScoreBoard
         private void button2_Click(object sender, EventArgs e)
         {
             // sending information forward
-
+            float parsavalue;
+            if (!float.TryParse(pointsTextBox.Text, out parsavalue))
+            {
+                pointsTextBox.Text = "0"; // Also fucntions as: competitor is not jumping and gets 0 points here
+            }
+            
             var value = float.Parse(pointsTextBox.Text);
+            
+
             skiJumpers[competitorNameComboBox.SelectedIndex].Points = value; // Add points on competitor
 
             // TODO!!! listbox2 näyttää tilanteen
