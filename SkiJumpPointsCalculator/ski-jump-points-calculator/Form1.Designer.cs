@@ -1,4 +1,4 @@
-﻿namespace SkiJumpPointsCalculator
+﻿namespace ski_jump_points_calculator
 {
     partial class SkiJumpMainForm
     {

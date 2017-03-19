@@ -1,4 +1,4 @@
-﻿namespace SkiJumpPointsCalculator
+﻿namespace ski_jump_points_calculator
 {
     internal class SkiJumper
     {

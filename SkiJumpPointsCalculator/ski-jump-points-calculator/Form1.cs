@@ -1,35 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
 
-namespace SkiJumpPointsCalculator
+namespace ski_jump_points_calculator
 {
     public partial class SkiJumpMainForm : Form
     {
         public static float StartingLevelInBeginning = 0;
-        List<SkiJumper> skiJumpers = new List<SkiJumper>();
+        List<SkiJumper> _skiJumpers = new List<SkiJumper>();
         //List<CurrentStandings> standings = new List<CurrentStandings>(); // somewhere 
-        List<int> hasJumped = new List<int>();
-        List<SkiJumper> roundOneResults = new List<SkiJumper>();
+        List<int> _hasJumped = new List<int>();
+        List<SkiJumper> _roundOneResults = new List<SkiJumper>();
 
         public SkiJumpMainForm()
         {
             InitializeComponent();
             // jumping order, name, points
-            skiJumpers.Add(new SkiJumper(1, "Adam Malycz", 0));
-            skiJumpers.Add(new SkiJumper(2, "Martin Schmitdt", 0));
-            skiJumpers.Add(new SkiJumper(3, "Jari Puikkonen", 0));
-            skiJumpers.Add(new SkiJumper(4, "Matti Hautamäki", 0));
-            skiJumpers.Add(new SkiJumper(5, "Noriaki Kasai", 0));
+            _skiJumpers.Add(new SkiJumper(1, "Adam Malycz", 0));
+            _skiJumpers.Add(new SkiJumper(2, "Martin Schmitdt", 0));
+            _skiJumpers.Add(new SkiJumper(3, "Jari Puikkonen", 0));
+            _skiJumpers.Add(new SkiJumper(4, "Matti Hautamäki", 0));
+            _skiJumpers.Add(new SkiJumper(5, "Noriaki Kasai", 0));
 
-            competitorNameComboBox.DataSource = skiJumpers;
+            competitorNameComboBox.DataSource = _skiJumpers;
             competitorNameComboBox.DisplayMember = "competitorName";
         }
 
@@ -43,14 +38,14 @@ namespace SkiJumpPointsCalculator
             string[] args = Environment.GetCommandLineArgs(); // show in console points is set ok
             foreach (string arg in args)
             {
-                Console.WriteLine("{0}", skiJumpers[competitorNameComboBox.SelectedIndex].CompetitorName);
-                Console.WriteLine("{0}", skiJumpers[competitorNameComboBox.SelectedIndex].Points);
-                Console.WriteLine("{0}", skiJumpers[competitorNameComboBox.SelectedIndex].Id);
+                Console.WriteLine("{0}", _skiJumpers[competitorNameComboBox.SelectedIndex].CompetitorName);
+                Console.WriteLine("{0}", _skiJumpers[competitorNameComboBox.SelectedIndex].Points);
+                Console.WriteLine("{0}", _skiJumpers[competitorNameComboBox.SelectedIndex].Id);
                 Console.WriteLine();
             }
             currentStandingsListView.Text = null;
 
-            hasJumped.Add(skiJumpers[competitorNameComboBox.SelectedIndex].Id);
+            _hasJumped.Add(_skiJumpers[competitorNameComboBox.SelectedIndex].Id);
 
 
             //clearing fields for the next jump
@@ -68,17 +63,17 @@ namespace SkiJumpPointsCalculator
             // if all jumpers have jumped, then next round
             // ---> 
             // roundGroupBox.Text = "Round 2";
-            if (hasJumped.Count == skiJumpers.Count)
+            if (_hasJumped.Count == _skiJumpers.Count)
             {
                 if (roundGroupBox.Text == "Round 2") // end of competition
                 {
                     // skiJumpers=roundOneResults + skiJumpers;
                     label2.ForeColor = Color.Crimson;
                     label2.Text = "Final Standings";
-                    skiJumpers = skiJumpers.OrderByDescending(x => x.Points).ToList();
+                    _skiJumpers = _skiJumpers.OrderByDescending(x => x.Points).ToList();
                     int p = 1;
 
-                    foreach (var skijumper in skiJumpers)
+                    foreach (var skijumper in _skiJumpers)
                     {
                         currentStandingsListView.Text += p + ". " + skijumper.CompetitorName + "\t" + skijumper.Points + " Points\n";
                         p++;
@@ -89,34 +84,36 @@ namespace SkiJumpPointsCalculator
                     // new round happens
                     roundGroupBox.Text = "Round 2";
                     // turn jumping order
-                    hasJumped.Clear();
-
-                    roundOneResults = skiJumpers; // can be used somewhere
-                    skiJumpers = skiJumpers.OrderByDescending(x => x.Points).ToList();
+                    _hasJumped.Clear();
+                    // todo :
+                    
+                    _skiJumpers = _skiJumpers.OrderByDescending(x => x.Points).ToList();
                     int p = 1;
-
-                    foreach (var skijumper in skiJumpers)
+                    _roundOneResults = _skiJumpers; // can be used somewhere
+                    foreach (var skijumper in _skiJumpers)
                     {
                         currentStandingsListView.Text += p + ". " + skijumper.CompetitorName + "\t" + skijumper.Points + " Points\n";
                         p++;
                     }
                     // clear standings
-                    skiJumpers.Reverse();
-                    competitorNameComboBox.DataSource = skiJumpers;
+                    _skiJumpers.Reverse();
+                    _roundOneResults.Reverse(); // can be used somewhere
+
+                    competitorNameComboBox.DataSource = _skiJumpers;
                     competitorNameComboBox.DisplayMember = "competitorName";
                 }
             }
             else
             {
-                if (competitorNameComboBox.SelectedIndex < skiJumpers.Count)
+                if (competitorNameComboBox.SelectedIndex < _skiJumpers.Count)
                 {
                     competitorNameComboBox.SelectedIndex = (competitorNameComboBox.SelectedIndex + 1);
                 }
-                // todo tänne tuolta// todo  tämä täältä tuonne alas : //todo!!! 
-                skiJumpers = skiJumpers.OrderByDescending(x => x.Points).ToList();
+                // todo tänne tuolta// todo  tämä täältä tuonne alas : //todo!!! täällä
+                _skiJumpers = _skiJumpers.OrderByDescending(x => x.Points).ToList();
                 int p = 1;
 
-                foreach (var skijumper in skiJumpers)
+                foreach (var skijumper in _skiJumpers)
                 {
                     currentStandingsListView.Text += p + ". " + skijumper.CompetitorName + "\t" + skijumper.Points + " Points\n";
                     p++;
@@ -137,9 +134,9 @@ namespace SkiJumpPointsCalculator
             //var currentJumper = SkiJumpMainForm.competitorNameComboBox.SelectedIndex;
 
             //foreach (int r in hasJumped.Intersect)
-            for (int i = 0; i < hasJumped.Count; i++)
+            for (int i = 0; i < _hasJumped.Count; i++)
             {
-                if (skiJumpers[competitorNameComboBox.SelectedIndex].Id == hasJumped[i])
+                if (_skiJumpers[competitorNameComboBox.SelectedIndex].Id == _hasJumped[i])
                 {
                     errorMessage.Visible = true;
                     goto nahno;
@@ -157,9 +154,9 @@ namespace SkiJumpPointsCalculator
             if (roundGroupBox.Text == "Round 2") // second round of competition
             {
                 // skiJumpers=roundOneResults + skiJumpers;
-                jumpTotalPoints = jumpTotalPoints + skiJumpers[competitorNameComboBox.SelectedIndex].Points;
+                jumpTotalPoints = jumpTotalPoints + _skiJumpers[competitorNameComboBox.SelectedIndex].Points;
             }
-            skiJumpers[competitorNameComboBox.SelectedIndex].Points = jumpTotalPoints; // Add points on competitor
+            _skiJumpers[competitorNameComboBox.SelectedIndex].Points = jumpTotalPoints; // Add points on competitor
 
             nahno:
             ;
